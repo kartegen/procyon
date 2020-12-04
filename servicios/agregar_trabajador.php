@@ -184,7 +184,12 @@
               <i class="fas fa-building"></i> Agregar Empresa
             </a>
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link" href="modificar.php">
+              <!-- <span data-feather="file-text"></span> -->
+              <i class="fas fa-user-plus"></i> Agregar Usuario
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -298,7 +303,7 @@
                   <label class="input-group-text" for="inputGroupSelect01">Mes</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01">
-                  <option selected>Choose...</option>
+                  <option selected>Seleccionar...</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -310,10 +315,15 @@
                   <label class="input-group-text" for="inputGroupSelect01">Año</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01">
-                  <option selected>Choose...</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option selected>Seleccionar...</option>
+                  <option value="1">2020</option>
+                  <option value="2">2021</option>
+                  <option value="3">2022</option>
+                  <option value="4">2023</option>
+                  <option value="5">2024</option>
+                  <option value="6">2025</option>
+                  <option value="7">2026</option>
+                  <option value="8">2027</option>
                 </select>
               </div>
 
@@ -323,7 +333,7 @@
 
           <hr class="my-4">
           <a class="btn btn-primary btn-lg" href="#" role="button"> <i class="far fa-save"></i> Registrar trabajador</a>
-          <a class="btn btn-danger btn-lg" href="#" role="button"> <i class="fas fa-times"></i> Cancelar</a>
+          <a class="btn btn-danger btn-lg" href="javascript:history.back()" role="button"> <i class="fas fa-times"></i> Cancelar</a>
         </div>
       </div>
 
