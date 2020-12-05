@@ -336,7 +336,7 @@
                 </div>
                 <select class="custom-select" id="inputGroupSelect01">
                   <option selected>Seleccionar...</option>
-                  <option value="1">Super Úsuario</option>
+                  <option value="1">Súper Usuario</option>
                   <option value="2">Usuario</option>
                   <option value="3">Trabajador</option>
                   <option value="3">Empresa</option>
