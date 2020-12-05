@@ -141,7 +141,7 @@ hr {
 }
 .btn-custom:hover, .btn-custom:focus, .btn-custom.focus, .btn-custom:active, .btn-custom.active {
 	color: #fff;
-	background-color: #5f9d07;
+	background-color: #008000;
 }
 .btn:active, .btn.active {
 	background-image: none;
@@ -205,7 +205,7 @@ header .intro-text {
 /* About Section */
 #about {
 	padding: 120px 0 80px 0;
-	background: #f6f6f6;
+	background: #c0c0c0;
 }
 #about h3 {
 	font-size: 22px;
@@ -213,7 +213,7 @@ header .intro-text {
 	margin: 20px 0 0 0;
 }
 #about .about-text span {
-	color: #70ad47;
+	color: #8080ff;
 	font-weight: 700;
 	letter-spacing: -1px;
 }
@@ -384,7 +384,7 @@ ol.type li a:hover {
 }
 #testimonials .overlay {
 	padding: 120px 0;
-	background: rgba(106, 175, 8, 0.85);
+	background: rgba(106, 175, 245, 0.85);
 }
 #testimonials h2 {
 	color: #fff;
