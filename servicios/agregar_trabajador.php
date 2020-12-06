@@ -224,6 +224,7 @@
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
         <div class="container-fluid">
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
+          <form action="prcd/proceso_agregar_trabajador.php" method="POST">
           <p><h2>Registro</h2></p>
           <hr class="my-4">
 
@@ -231,28 +232,45 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Nombre completo</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre" require>
               </div>
               
               <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">CURP</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="curp" require>
               </div>
 
               <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">NSS</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nss" required>
               </div>
 
-              <div class="input-group mb-3 w-50">
+              <!-- <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Tipo de sangre</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="tipo_sangre" require>
+              </div> -->
+
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Tipo de sangre</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="tipo_sangre" require>
+                <option selected>Seleccionar...</option>
+                  <option value="1">O negativo</option>
+                  <option value="2">O positivo</option>
+                  <option value="3">A negativo</option>
+                  <option value="4">A positivo</option>
+                  <option value="5">B negativo</option>
+                  <option value="6">B positivo</option>
+                  <option value="7">AB negativo</option>
+                  <option value="8">AB positivo</option>
+                </select>
               </div>
 
             
@@ -262,7 +280,7 @@
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Día</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select" id="inputGroupSelect01" name="dia" require>
                   <option selected>Selecionar...</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -302,7 +320,7 @@
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Mes</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select" id="inputGroupSelect01" name="mes" require>
                 <option selected>Seleccionar...</option>
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
@@ -323,7 +341,7 @@
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Año</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select" id="inputGroupSelect01" name="annio" require>
                   <option selected>Seleccionar...</option>
                   <option value="1">2020</option>
                   <option value="2">2021</option>
@@ -341,8 +359,9 @@
               <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button>
 
           <hr class="my-4">
-          <a class="btn btn-primary btn-lg" href="#" role="button"> <i class="far fa-save"></i> Registrar trabajador</a>
+          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar trabajador</button>
           <a class="btn btn-danger btn-lg" href="javascript:history.back()" role="button"> <i class="fas fa-times"></i> Cancelar</a>
+          </form>        
         </div>
       </div>
 

@@ -224,6 +224,7 @@
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
         <div class="container-fluid">
+        <form action="prcd/proceso_agregar_cliente.php" method="POST">
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
           <p><h2>Registro</h2></p>
           <hr class="my-4">
@@ -232,22 +233,22 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Nombre empresa</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre_empresa" require>
               </div>
               
               <div class="input-group mb-3 w-75">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Domicilio</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="domicilio" require>
               </div>
 
-              <div class="input-group mb-3 w-50">
+              <!-- <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Tipo de sangre</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-              </div>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="tipo_sangre" require>
+              </div> -->
 
             
               <p> <h5>Fecha de registro</h5></p>
@@ -256,7 +257,7 @@
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Día</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select" id="inputGroupSelect01" name="dia" require>
                   <option selected>Selecionar...</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -296,7 +297,7 @@
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Mes</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select" id="inputGroupSelect01" name="mes" require>
                   <option selected>Seleccionar...</option>
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
@@ -317,7 +318,7 @@
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Año</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select" id="inputGroupSelect01" name="annio" require>
                   <option selected>Seleccionar...</option>
                   <option value="1">2020</option>
                   <option value="2">2021</option>
@@ -330,13 +331,14 @@
                 </select>
               </div>
 
-              <p> <h5>Fotografía</h5></p>
+              <!-- <p> <h5>Fotografía</h5></p>
               <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p>
-              <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button>
+              <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button> -->
 
           <hr class="my-4">
-          <a class="btn btn-primary btn-lg" href="#" role="button"> <i class="far fa-save"></i> Registrar trabajador</a>
+          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar empresa</button>
           <a class="btn btn-danger btn-lg" href="javascript:history.back()" role="button"> <i class="fas fa-times"></i> Cancelar</a>
+          </form>
         </div>
       </div>
 
