@@ -30,12 +30,12 @@
                         <div class="col-lg-10 col-xl-7 mx-auto">
                             <h3 class="display-4">Bienvenido</h3>
                             <p class="text-muted mb-4">Ingresa tus credenciales para acceder al sistema.</p>
-                            <form>
+                            <form action="prcd/proceso_validacion.php" method="POST">
                                 <div class="form-group mb-3">
-                                    <input id="inputEmail" type="email" placeholder="Usuario" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                    <input id="inputEmail" type="text" placeholder="Usuario" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" name="usr">
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input id="inputPassword" type="password" placeholder="Contraseña" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <input id="inputPassword" type="password" placeholder="Contraseña" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" name="pwd">
                                 </div>
                                 <div class="custom-control custom-checkbox mb-3">
                                     <input id="customCheck1" type="checkbox" checked class="custom-control-input">

@@ -23,7 +23,7 @@ $pwd=$_POST['pwd'];
 //require '../lib/phpmailer/src/SMTP.php';
 
 
-$query="SELECT * FROM usr WHERE usr='$usuario' AND pwd='$pwd'";
+$query="SELECT * FROM usuarios WHERE usr='$usuario' AND pwd='$pwd'";
 
 $proceso=$conn->query($query);
 
@@ -32,17 +32,17 @@ if ($resultado=mysqli_fetch_array($proceso)){
 
     $_SESSION['usr']=$usuario;
     $_SESSION['id']=$resultado['id'];
-    $_SESSION['perfil']=$resultado['perfil'];
-    $_SESSION['nombre']=$resultado['nombre'];
+    $_SESSION['perfil']=$resultado['priv'];
+    $_SESSION['nombre']=$resultado['nombre_completo'];
      
     
 
-      if($resultado['perfil']==1){
+      if($resultado['priv']==1){
         
         echo "<script type=\"text/javascript\">location.href='../dashboard.php';</script>";
         }
     
-    elseif($resultado['perfil']==2){
+    elseif($resultado['priv']==2){
 
         echo "<script type=\"text/javascript\">location.href='../dashboard.php';</script>";
         
@@ -51,7 +51,7 @@ if ($resultado=mysqli_fetch_array($proceso)){
     //echo "<script type=\"text/javascript\">location.href='08_inicio.php';</script>";
     }
 
-    elseif($resultado['perfil']==3){
+    elseif($resultado['priv']==3){
 
         echo "<script type=\"text/javascript\">location.href='../dashboard.php';</script>";
     }

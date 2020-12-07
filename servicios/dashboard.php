@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 
 // if (isset($_SESSION['usr'])) {
 //     if($_SESSION['perfil']==1){
@@ -25,14 +25,14 @@
     // die();
 // }
 
-// include('prcd/conn.php');
+include('prcd/conn.php');
 
 // variables de sesión
 
-    // $usuario = $_SESSION['usr'];
-    // $id = $_SESSION['id'];
-    // $perfil = $_SESSION['perfil'];
-    // $nombre = $_SESSION['nombre'];
+    $usuario = $_SESSION['usr'];
+    $id = $_SESSION['id'];
+    $perfil = $_SESSION['perfil'];
+    $nombre = $_SESSION['nombre'];
 
 ?>
 
@@ -133,20 +133,20 @@
           
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>bitácora</span>
-            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <a class="d-flex align-items-center text-muted" href="dashboard.php" aria-label="Add a new report">
               <span data-feather="plus-circle"></span>
             </a>
           </h6>
 
           <li class="nav-item">
-            <a class="nav-link" href="trimestre1.php">
+            <a class="nav-link" href="#">
               <!-- <span data-feather="layers"></span> -->
                
               <i class="fas fa-file-alt"></i> Revisión
             </a>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="trimestre2.php">
+            <a class="nav-link" href="agregar_bitacora.php">
               <!-- <span data-feather="layers"></span> -->
               <i class="fas fa-file-upload"></i> Cargar documento
             </a>
@@ -173,19 +173,19 @@
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="modificar.php">
+            <a class="nav-link" href="agregar_trabajador.php">
               <!-- <span data-feather="file-text"></span> -->
               <i class="fas fa-user-plus"></i> Agregar Trabajador
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="modificar.php">
+            <a class="nav-link" href="agregar_cliente.php">
               <!-- <span data-feather="file-text"></span> -->
               <i class="fas fa-building"></i> Agregar Empresa
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="modificar.php">
+            <a class="nav-link" href="agregar_usuarios.php">
               <!-- <span data-feather="file-text"></span> -->
               <i class="fas fa-user-plus"></i> Agregar Usuario
             </a>
@@ -227,7 +227,7 @@
           <p class="lead">PROCYON</p>
           <hr class="my-4">
           <p>Cargar documentos</p>
-          <a class="btn btn-primary btn-lg" href="#" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a>
+          <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a>
         </div>
       </div>
 
@@ -293,26 +293,26 @@
       <div class="container">
         <div class="row row-cols-1 row-cols-md-2">
           <div class="col mb-4">
-            <div class="card text-white bg-info mb-6" style="max-width: 36rem; height: 27rem;">
-              <div class="card-header">Enero-Marzo 2020</div>
+            <div class="card text-white bg-primary mb-6" style="max-width: 36rem; height: 27rem;">
+              <div class="card-header">Tabla 1</div>
               <div class="card-body"><br><br><br>
-                <h1 class="card-title">Primer trimestre</h1>
+                <h1 class="card-title">TABLA</h1>
                 <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores aliquid, dolores distinctio similique excepturi omnis qui accusantium sit molestiae ad dignissimos voluptatem vitae! Ipsam molestiae culpa quia quas libero necessitatibus..</p>
-                <p><a href="trimestre1.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p>
+                <!-- <p><a href="trimestre1.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
               </div>
             </div>
           </div>
           <div class="col mb-4">
-            <div class="card text-white bg-info mb-6" style="max-width: 36rem;height: 27rem;">
-              <div class="card-header">Abril-Junio 2020</div>
+            <div class="card text-white bg-primary mb-6" style="max-width: 36rem;height: 27rem;">
+              <div class="card-header">Tabla 2</div>
               <div class="card-body"><br><br><br>
-                <h1 class="card-title">Segundo trimestre</h1>
+                <h1 class="card-title">TABLA</h1>
                 <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, fugit animi, fugiat fuga, iure quod adipisci a incidunt at dolorum ad est porro aut? Corporis nisi pariatur officiis sint repellat..</p>
-                <p><a href="trimestre2.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p>
+                <!-- <p><a href="trimestre2.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
               </div>
             </div>
           </div>
-          <div class="col mb-4">
+          <!-- <div class="col mb-4">
             <div class="card text-white bg-info mb-6" style="max-width: 36rem;height: 27rem;">
               <div class="card-header">Julio-Septiembre 2020</div>
               <div class="card-body"><br><br><br>
@@ -321,8 +321,8 @@
                 <p><a href="trimestre3.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p>
               </div>
             </div>
-          </div>
-          <div class="col mb-4">
+          </div> -->
+          <!-- <div class="col mb-4">
             <div class="card text-white bg-info mb-6" style="max-width: 36rem;height: 27rem;">
               <div class="card-header">Octubre-Diciembre 2020</div>
               <div class="card-body"><br><br><br>
@@ -331,7 +331,7 @@
                 <p><a href="trimestre4.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p>
               </div>
             </div>
-          </div>
+          </div> -->
 
           
         </div>
@@ -340,7 +340,7 @@
 
 
 
-      <div class="container">
+      <!-- <div class="container">
 
         <div class="col mb-12">
           <div class="card text-white bg-warning mb-12 align-middle" style="max-width: 96rem;">
@@ -358,7 +358,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       </div>
 

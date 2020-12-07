@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 
 // if (isset($_SESSION['usr'])) {
 //     if($_SESSION['perfil']==1){
@@ -25,14 +25,14 @@
     // die();
 // }
 
-// include('prcd/conn.php');
+include('prcd/conn.php');
 
 // variables de sesión
 
-    // $usuario = $_SESSION['usr'];
-    // $id = $_SESSION['id'];
-    // $perfil = $_SESSION['perfil'];
-    // $nombre = $_SESSION['nombre'];
+    $usuario = $_SESSION['usr'];
+    $id = $_SESSION['id'];
+    $perfil = $_SESSION['perfil'];
+    $nombre = $_SESSION['nombre'];
 
 ?>
 
@@ -123,7 +123,7 @@
         <ul class="nav flex-column">
  
            <li class="nav-item">
-            <a class="nav-link active" href="dashboard.html">
+            <a class="nav-link active" href="dashboard.php">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
               Dashboard <span class="sr-only">(current)</span>
@@ -139,14 +139,14 @@
           </h6>
 
           <li class="nav-item">
-            <a class="nav-link" href="trimestre1.php">
+            <a class="nav-link" href="#">
               <!-- <span data-feather="layers"></span> -->
                
               <i class="fas fa-file-alt"></i> Revisión
             </a>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="trimestre2.php">
+            <a class="nav-link" href="agregar_bitacora.php">
               <!-- <span data-feather="layers"></span> -->
               <i class="fas fa-file-upload"></i> Cargar documento
             </a>
@@ -173,19 +173,19 @@
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="modificar.php">
+            <a class="nav-link" href="agregar_trabajador.php">
               <!-- <span data-feather="file-text"></span> -->
               <i class="fas fa-user-plus"></i> Agregar Trabajador
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="modificar.php">
+            <a class="nav-link" href="agregar_cliente.php">
               <!-- <span data-feather="file-text"></span> -->
               <i class="fas fa-building"></i> Agregar Empresa
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="modificar.php">
+            <a class="nav-link" href="agregar_usuarios.php">
               <!-- <span data-feather="file-text"></span> -->
               <i class="fas fa-user-plus"></i> Agregar Usuario
             </a>
