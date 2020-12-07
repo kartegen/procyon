@@ -47,7 +47,10 @@ include('prcd/conn.php');
     <title>Agregar | PROCYON</title>
 
     <link rel="icon" type="image/png" href="img/icon.ico"/>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
     <!-- Bootstrap core CSS -->
@@ -224,7 +227,7 @@ include('prcd/conn.php');
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
         <div class="container-fluid">
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
-          <form action="prcd/proceso_agregar_trabajador.php" method="POST">
+          <form action="prcd/proceso_bitacora.php" method="POST" enctype="multipart/form-data">
           <p><h2>Registro</h2></p>
           <hr class="my-4">
 
@@ -234,15 +237,17 @@ include('prcd/conn.php');
                         <label class="input-group-text" for="inputGroupSelect01">Empresa</label>
                       </div>
                       <select class="custom-select" id="inputGroupSelect01" name="empresa" require>
-                      <option selected>Seleccionar...</option>
-                        <option value="1">O negativo</option>
-                        <option value="2">O positivo</option>
-                        <option value="3">A negativo</option>
-                        <option value="4">A positivo</option>
-                        <option value="5">B negativo</option>
-                        <option value="6">B positivo</option>
-                        <option value="7">AB negativo</option>
-                        <option value="8">AB positivo</option>
+                          <option selected>Seleccionar...</option>
+                            <?php
+                            $tabla="SELECT * FROM clientes ORDER BY id ASC";
+                            $resultadotabla = $conn->query($tabla);
+                            $numero=0;
+                            while($row = $resultadotabla->fetch_assoc()){
+                                $numero++;
+
+                                    echo '<option value="'.$row['id'].'">'.$row['cliente'].'</option>';
+                            }
+                            ?> <!-- fin loop tabla -->
                       </select>
                     </div>
           
@@ -280,14 +285,18 @@ include('prcd/conn.php');
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="trabajador" require>
                 <option selected>Seleccionar...</option>
-                  <option value="1">O negativo</option>
-                  <option value="2">O positivo</option>
-                  <option value="3">A negativo</option>
-                  <option value="4">A positivo</option>
-                  <option value="5">B negativo</option>
-                  <option value="6">B positivo</option>
-                  <option value="7">AB negativo</option>
-                  <option value="8">AB positivo</option>
+                <!-- <option value="">Seleccionar...</option> -->
+                    <?php
+                    $tabla="SELECT * FROM trabajadores ORDER BY id ASC";
+                    $resultadotabla = $conn->query($tabla);
+                    $numero=0;
+                    while($row = $resultadotabla->fetch_assoc()){
+                        $numero++;
+
+                            echo '<option value="'.$row['id'].'">'.$row['nombre'].'</option>';
+                    }
+                     ?> <!-- fin loop tabla -->
+                     
                 </select>
               </div>
 
@@ -373,21 +382,26 @@ include('prcd/conn.php');
                 </select>
               </div>
 
-              <p> <h5>Documento</h5></p>
-              <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p>
+              <!-- <p> <h5>Documento</h5></p>
+              <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p> -->
 
-              <div class="input-group mb-3 w-50">
+              <div class="mb-3 w-50">
+                <label for="formFile" class="form-label">Cargar archivo</label>
+                <input class="form-control" type="file" id="file1" name="file1">
+              </div>
+
+              <div class="input-group mb-3 w-75">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Observaciones</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="descripción" required>
-              </div> -->
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="observaciones" required>
+              </div>
 
 
-              <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button>
+              <!-- <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button> -->
 
           <hr class="my-4">
-          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar trabajador</button>
+          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar bitácora</button>
           <a class="btn btn-danger btn-lg" href="javascript:history.back()" role="button"> <i class="fas fa-times"></i> Cancelar</a>
           </form>        
         </div>
