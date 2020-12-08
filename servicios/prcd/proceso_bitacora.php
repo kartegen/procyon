@@ -56,7 +56,8 @@ $capturo=1;
               if(move_uploaded_file($_FILES["file1"]["tmp_name"],"../files/". $link .'_'. $codigo .'_'.$_FILES['file1']['name'])){
                 //   echo "$fileName carga completa";
                   
-                  $ruta_pptx = "../files/". $link .'_'. $codigo .'_'.$_FILES['file1']['name'];
+                  // $ruta_pptx = "../files/". $link .'_'. $codigo .'_'.$_FILES['file1']['name'];
+                  $ruta_pptx = "./files/". $link .'_'. $codigo .'_'.$_FILES['file1']['name'];
                  
                 //   $sqlinsert= "UPDATE archivos SET link1='$ruta_pptx' WHERE id_usr='$curp'";
                 //   $resultado2= $conn->query($sqlinsert);
@@ -77,7 +78,7 @@ VALUES('$empresa','$trabajador','$capturo','$fecha_dia','$fecha_mes','$fecha_ann
 
  if($resultado2){
 
- header ('Location:../dashboard.php');
+ header ('Location:../revision_bitacora.php');
  }
 
  else{

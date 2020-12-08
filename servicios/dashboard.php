@@ -139,7 +139,7 @@ include('prcd/conn.php');
           </h6>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="revision_bitacora.php">
               <!-- <span data-feather="layers"></span> -->
                
               <i class="fas fa-file-alt"></i> Revisión

@@ -132,7 +132,7 @@ include('prcd/conn.php');
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
-          <hr style="color: dimgrey;">
+          <hr>
           
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>bitácora</span>
@@ -142,7 +142,7 @@ include('prcd/conn.php');
           </h6>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="revision_bitacora.php">
               <!-- <span data-feather="layers"></span> -->
                
               <i class="fas fa-file-alt"></i> Revisión
@@ -224,7 +224,7 @@ include('prcd/conn.php');
     <div class="container-fluid ">
 
 
-      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
+      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; margin-top:100px; padding:45px;">
         <div class="container-fluid">
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
           <form action="prcd/proceso_bitacora.php" method="POST" enctype="multipart/form-data">
@@ -250,34 +250,6 @@ include('prcd/conn.php');
                             ?> <!-- fin loop tabla -->
                       </select>
                     </div>
-          
-          <!-- <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Nombre completo</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre" require>
-              </div>
-              
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">CURP</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="curp" require>
-              </div>
-
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">NSS</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nss" required>
-              </div> -->
-
-              <!-- <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Tipo de sangre</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="tipo_sangre" require>
-              </div> -->
 
               <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
@@ -371,14 +343,14 @@ include('prcd/conn.php');
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="annio" require>
                   <option selected>Seleccionar...</option>
-                  <option value="1">2020</option>
-                  <option value="2">2021</option>
-                  <option value="3">2022</option>
-                  <option value="4">2023</option>
-                  <option value="5">2024</option>
-                  <option value="6">2025</option>
-                  <option value="7">2026</option>
-                  <option value="8">2027</option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
                 </select>
               </div>
 
