@@ -25,7 +25,7 @@ session_start();
     // die();
 // }
 
-include('prcd/conn.php');
+include('../../prcd/conn.php');
 
 // variables de sesión
 
@@ -46,12 +46,15 @@ include('prcd/conn.php');
     <meta name="generator" content="">
     <title>Agregar | PROCYON</title>
 
-    <link rel="icon" type="image/png" href="img/icon.ico"/>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+    <link rel="icon" type="image/png" href="../../img/icon.ico"/>
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -70,7 +73,7 @@ include('prcd/conn.php');
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> -->
@@ -91,7 +94,7 @@ include('prcd/conn.php');
       
         
        
-        <a class="btn btn-outline-secondary" href="prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
+        <a class="btn btn-outline-secondary" href="../../prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
         
       </li>
   </ul>
@@ -129,7 +132,7 @@ include('prcd/conn.php');
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
-          <hr style="color: dimgrey;">
+          <hr>
           
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>bitácora</span>
@@ -166,37 +169,13 @@ include('prcd/conn.php');
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Ajustes</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_trabajador.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-user-plus"></i> Agregar Trabajador
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_cliente.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-building"></i> Agregar Empresa
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_usuarios.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-user-plus"></i> Agregar Usuario
-            </a>
-          </li>
-        </ul>
+          
       </div>
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 ">
-        <h1 class="display-4">Agregar trabajador</h1>
+        <h1 class="display-4">Agregar documento a bitácora</h1>
         
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
@@ -221,60 +200,57 @@ include('prcd/conn.php');
     <div class="container-fluid ">
 
 
-      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
+      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; margin-top:100px; padding:45px;">
         <div class="container-fluid">
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
-          <form action="prcd/proceso_agregar_trabajador.php" method="POST">
+          <form action="../../prcd/proceso_bitacora.php" method="POST" enctype="multipart/form-data">
           <p><h2>Registro</h2></p>
           <hr class="my-4">
 
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Nombre completo</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre" require>
-              </div>
               
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">CURP</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="curp" require>
-              </div>
+                <div class="input-group mb-3 w-50">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Empresa</label>
+                      </div>
+                      <select class="custom-select" id="inputGroupSelect01" name="empresa" require>
+                          <option selected>Seleccionar...</option>
+                            <?php
+                            $tabla="SELECT * FROM clientes ORDER BY id ASC";
+                            $resultadotabla = $conn->query($tabla);
+                            $numero=0;
+                            while($row = $resultadotabla->fetch_assoc()){
+                                $numero++;
+
+                                    echo '<option value="'.$row['id'].'">'.$row['cliente'].'</option>';
+                            }
+                            ?> <!-- fin loop tabla -->
+                      </select>
+                    </div>
 
               <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">NSS</span>
+                  <label class="input-group-text" for="inputGroupSelect01">Trabajador</label>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nss" required>
-              </div>
-
-              <!-- <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Tipo de sangre</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="tipo_sangre" require>
-              </div> -->
-
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Tipo de sangre</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" name="tipo_sangre" require>
+                <select class="custom-select" id="inputGroupSelect01" name="trabajador" require>
                 <option selected>Seleccionar...</option>
-                  <option value="1">O negativo</option>
-                  <option value="2">O positivo</option>
-                  <option value="3">A negativo</option>
-                  <option value="4">A positivo</option>
-                  <option value="5">B negativo</option>
-                  <option value="6">B positivo</option>
-                  <option value="7">AB negativo</option>
-                  <option value="8">AB positivo</option>
+                <!-- <option value="">Seleccionar...</option> -->
+                    <?php
+                    $tabla="SELECT * FROM trabajadores ORDER BY id ASC";
+                    $resultadotabla = $conn->query($tabla);
+                    $numero=0;
+                    while($row = $resultadotabla->fetch_assoc()){
+                        $numero++;
+
+                            echo '<option value="'.$row['id'].'">'.$row['nombre'].'</option>';
+                    }
+                     ?> <!-- fin loop tabla -->
+                     
                 </select>
               </div>
 
+              <!-- capturó se tiene que tomar de la variable de sesión -->
             
-              <p> <h5>Fecha de ingreso</h5></p>
+              <p> <h5>Fecha de registro</h5></p>
 
               <div class="input-group mb-3 w-25">
                 <div class="input-group-prepend">
@@ -344,22 +320,36 @@ include('prcd/conn.php');
                 <select class="custom-select" id="inputGroupSelect01" name="annio" require>
                   <option selected>Seleccionar...</option>
                   <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
                 </select>
               </div>
 
-              <p> <h5>Fotografía</h5></p>
-              <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p>
-              <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button>
+              <!-- <p> <h5>Documento</h5></p>
+              <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p> -->
+
+              <div class="mb-3 w-50">
+                <label for="formFile" class="form-label">Cargar archivo</label>
+                <input class="form-control" type="file" id="file1" name="file1">
+              </div>
+
+              <div class="input-group mb-3 w-75">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Observaciones</span>
+                </div>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="observaciones" required>
+              </div>
+
+
+              <!-- <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button> -->
 
           <hr class="my-4">
-          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar trabajador</button>
+          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar bitácora</button>
           <a class="btn btn-danger btn-lg" href="javascript:history.back()" role="button"> <i class="fas fa-times"></i> Cancelar</a>
           </form>        
         </div>

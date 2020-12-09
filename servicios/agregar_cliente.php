@@ -320,14 +320,14 @@ include('prcd/conn.php');
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="annio" require>
                   <option selected>Seleccionar...</option>
-                  <option value="1">2020</option>
-                  <option value="2">2021</option>
-                  <option value="3">2022</option>
-                  <option value="4">2023</option>
-                  <option value="5">2024</option>
-                  <option value="6">2025</option>
-                  <option value="7">2026</option>
-                  <option value="8">2027</option>
+                  <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
                 </select>
               </div>
 

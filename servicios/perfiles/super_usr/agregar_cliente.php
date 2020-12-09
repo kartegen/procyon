@@ -25,7 +25,7 @@ session_start();
     // die();
 // }
 
-include('prcd/conn.php');
+include('../../prcd/conn.php');
 
 // variables de sesión
 
@@ -44,14 +44,14 @@ include('prcd/conn.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>Agregar | PROCYON</title>
+    <title>Agregar cliente | PROCYON</title>
 
-    <link rel="icon" type="image/png" href="img/icon.ico"/>
+    <link rel="icon" type="image/png" href="../../img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -70,7 +70,7 @@ include('prcd/conn.php');
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> -->
@@ -91,7 +91,7 @@ include('prcd/conn.php');
       
         
        
-        <a class="btn btn-outline-secondary" href="prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
+        <a class="btn btn-outline-secondary" href="../../prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
         
       </li>
   </ul>
@@ -126,7 +126,7 @@ include('prcd/conn.php');
             <a class="nav-link active" href="dashboard.php">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
-              Dashboard <span class="sr-only">(current)</span>
+              Dashboard (Súper Usuario)<span class="sr-only">(current)</span>
             </a>
           </li>
           <hr style="color: dimgrey;">
@@ -190,13 +190,14 @@ include('prcd/conn.php');
               <i class="fas fa-user-plus"></i> Agregar Usuario
             </a>
           </li>
+          
         </ul>
       </div>
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 ">
-        <h1 class="display-4">Agregar trabajador</h1>
+        <h1 class="display-4">Agregar empresa</h1>
         
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
@@ -223,30 +224,23 @@ include('prcd/conn.php');
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
         <div class="container-fluid">
+        <form action="../../prcd/proceso_agregar_cliente.php" method="POST">
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
-          <form action="prcd/proceso_agregar_trabajador.php" method="POST">
           <p><h2>Registro</h2></p>
           <hr class="my-4">
 
-              <div class="input-group mb-3 w-50">
+              <div class="input-group mb-3 w-75">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Nombre completo</span>
+                  <span class="input-group-text" id="basic-addon3">Nombre empresa</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre" require>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre_empresa" require>
               </div>
               
-              <div class="input-group mb-3 w-50">
+              <div class="input-group mb-3 w-75">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">CURP</span>
+                  <span class="input-group-text" id="basic-addon3">Domicilio</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="curp" require>
-              </div>
-
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">NSS</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nss" required>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="domicilio" require>
               </div>
 
               <!-- <div class="input-group mb-3 w-50">
@@ -256,25 +250,8 @@ include('prcd/conn.php');
                 <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="tipo_sangre" require>
               </div> -->
 
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Tipo de sangre</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" name="tipo_sangre" require>
-                <option selected>Seleccionar...</option>
-                  <option value="1">O negativo</option>
-                  <option value="2">O positivo</option>
-                  <option value="3">A negativo</option>
-                  <option value="4">A positivo</option>
-                  <option value="5">B negativo</option>
-                  <option value="6">B positivo</option>
-                  <option value="7">AB negativo</option>
-                  <option value="8">AB positivo</option>
-                </select>
-              </div>
-
             
-              <p> <h5>Fecha de ingreso</h5></p>
+              <p> <h5>Fecha de registro</h5></p>
 
               <div class="input-group mb-3 w-25">
                 <div class="input-group-prepend">
@@ -321,7 +298,7 @@ include('prcd/conn.php');
                   <label class="input-group-text" for="inputGroupSelect01">Mes</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="mes" require>
-                <option selected>Seleccionar...</option>
+                  <option selected>Seleccionar...</option>
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
                   <option value="3">Marzo</option>
@@ -354,14 +331,14 @@ include('prcd/conn.php');
                 </select>
               </div>
 
-              <p> <h5>Fotografía</h5></p>
+              <!-- <p> <h5>Fotografía</h5></p>
               <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p>
-              <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button>
+              <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button> -->
 
           <hr class="my-4">
-          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar trabajador</button>
+          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar empresa</button>
           <a class="btn btn-danger btn-lg" href="javascript:history.back()" role="button"> <i class="fas fa-times"></i> Cancelar</a>
-          </form>        
+          </form>
         </div>
       </div>
 

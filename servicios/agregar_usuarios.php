@@ -126,7 +126,7 @@ include('prcd/conn.php');
             <a class="nav-link active" href="dashboard.php">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
-              Dashboard <span class="sr-only">(current)</span>
+              Dashboard (Perfil usuario)<span class="sr-only">(current)</span>
             </a>
           </li>
           <hr style="color: dimgrey;">
@@ -319,14 +319,14 @@ include('prcd/conn.php');
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="fecha_annio" require>
                   <option selected>Seleccionar...</option>
-                  <option value="1">2020</option>
-                  <option value="2">2021</option>
-                  <option value="3">2022</option>
-                  <option value="4">2023</option>
-                  <option value="5">2024</option>
-                  <option value="6">2025</option>
-                  <option value="7">2026</option>
-                  <option value="8">2027</option>
+                  <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
                 </select>
               </div>
 
@@ -339,8 +339,8 @@ include('prcd/conn.php');
                   <option selected>Seleccionar...</option>
                   <option value="1">Súper Usuario</option>
                   <option value="2">Usuario</option>
-                  <option value="3">Trabajador</option>
                   <option value="3">Empresa</option>
+                  <option value="4">Trabajador</option>
                 </select>
               </div>
 

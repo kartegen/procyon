@@ -25,7 +25,7 @@ session_start();
     // die();
 // }
 
-include('prcd/conn.php');
+include('../../prcd/conn.php');
 
 // variables de sesión
 
@@ -44,14 +44,14 @@ include('prcd/conn.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>Agregar | PROCYON</title>
+    <title>Dashboard | PROCYON</title>
 
-    <link rel="icon" type="image/png" href="img/icon.ico"/>
+    <link rel="icon" type="../../image/png" href="img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -70,7 +70,7 @@ include('prcd/conn.php');
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> -->
@@ -91,7 +91,7 @@ include('prcd/conn.php');
       
         
        
-        <a class="btn btn-outline-secondary" href="prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
+        <a class="btn btn-outline-secondary" href="../../prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
         
       </li>
   </ul>
@@ -123,17 +123,17 @@ include('prcd/conn.php');
         <ul class="nav flex-column">
  
            <li class="nav-item">
-            <a class="nav-link active" href="dashboard.php">
+            <a class="nav-link active" href="dashboard.html">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
-              Dashboard <span class="sr-only">(current)</span>
+              Dashboard (Súper Usuario)<span class="sr-only">(current)</span>
             </a>
           </li>
           <hr style="color: dimgrey;">
           
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>bitácora</span>
-            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <a class="d-flex align-items-center text-muted" href="dashboard.php" aria-label="Add a new report">
               <span data-feather="plus-circle"></span>
             </a>
           </h6>
@@ -196,7 +196,7 @@ include('prcd/conn.php');
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 ">
-        <h1 class="display-4">Agregar trabajador</h1>
+        <h1 class="display-4">Dashboard (Súper Usuario)</h1>
         
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
@@ -207,14 +207,14 @@ include('prcd/conn.php');
         </div>
       </div>
 
-      <h5 class="text-primary" style="margin-top:-27px"> <?php
+      <h4 class="text-primary" style="margin-top:-27px"> <?php
                   date_default_timezone_set('America/Mexico_City');
                   setlocale(LC_TIME, 'es_MX.UTF-8');
                   $fecha_actual=strftime("%Y-%m-%d");
                   $hora_actual=strftime("%H:%M:%S");
 
                   echo 'Zacatecas, Zac., '.$hora_actual.', '. $fecha_actual;
-              ?></h5>
+              ?></h4>
 
       <!-- <hr style="color: dimgrey;"> -->
       <h2></h2>
@@ -223,145 +223,11 @@ include('prcd/conn.php');
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
         <div class="container-fluid">
-          <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
-          <form action="prcd/proceso_agregar_trabajador.php" method="POST">
-          <p><h2>Registro</h2></p>
+          <h1 class="display-4">Bienvenido al sistema de bitácoras</h1>
+          <p class="lead">PROCYON</p>
           <hr class="my-4">
-
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Nombre completo</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre" require>
-              </div>
-              
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">CURP</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="curp" require>
-              </div>
-
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">NSS</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nss" required>
-              </div>
-
-              <!-- <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Tipo de sangre</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="tipo_sangre" require>
-              </div> -->
-
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Tipo de sangre</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" name="tipo_sangre" require>
-                <option selected>Seleccionar...</option>
-                  <option value="1">O negativo</option>
-                  <option value="2">O positivo</option>
-                  <option value="3">A negativo</option>
-                  <option value="4">A positivo</option>
-                  <option value="5">B negativo</option>
-                  <option value="6">B positivo</option>
-                  <option value="7">AB negativo</option>
-                  <option value="8">AB positivo</option>
-                </select>
-              </div>
-
-            
-              <p> <h5>Fecha de ingreso</h5></p>
-
-              <div class="input-group mb-3 w-25">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Día</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" name="dia" require>
-                  <option selected>Selecionar...</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-                  <option value="22">22</option>
-                  <option value="23">23</option>
-                  <option value="24">24</option>
-                  <option value="25">25</option>
-                  <option value="26">26</option>
-                  <option value="27">27</option>
-                  <option value="28">28</option>
-                  <option value="29">29</option>
-                  <option value="30">30</option>
-                  <option value="31">31</option>
-                </select>
-              </div>
-
-              <div class="input-group mb-3 w-25">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Mes</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" name="mes" require>
-                <option selected>Seleccionar...</option>
-                  <option value="1">Enero</option>
-                  <option value="2">Febrero</option>
-                  <option value="3">Marzo</option>
-                  <option value="4">Abril</option>
-                  <option value="5">Mayo</option>
-                  <option value="6">Junio</option>
-                  <option value="7">Julio</option>
-                  <option value="8">Agosto</option>
-                  <option value="9">Septiembre</option>
-                  <option value="10">Octubre</option>
-                  <option value="11">Noviembre</option>
-                  <option value="12">Diciembre</option>
-                </select>
-              </div>
-
-              <div class="input-group mb-3 w-25">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Año</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" name="annio" require>
-                  <option selected>Seleccionar...</option>
-                  <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                </select>
-              </div>
-
-              <p> <h5>Fotografía</h5></p>
-              <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p>
-              <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button>
-
-          <hr class="my-4">
-          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar trabajador</button>
-          <a class="btn btn-danger btn-lg" href="javascript:history.back()" role="button"> <i class="fas fa-times"></i> Cancelar</a>
-          </form>        
+          <p>Cargar documentos</p>
+          <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a>
         </div>
       </div>
 
@@ -369,7 +235,132 @@ include('prcd/conn.php');
       
       <!-- card -->
 
-     
+      <div class="container-fluid">
+        <div class="row row-cols-2 row-cols-md-4">
+          <div class="col mb-3">
+            <div class="card text-dark bg-light mb-6" style="max-width: 30rem; height: 12rem; box-shadow: 4px -1px 0px -1px #005eff;">
+              <!-- <div class="card-header">Enero-Marzo 2020</div> -->
+              <div class="card-body">
+                <h5 class="card-title text-primary">Documentos cargados en el sistema</h5>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                <p class="card-text">Número de documentos ###.</p>
+                <!-- <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col mb-3">
+            <div class="card text-dark bg-light mb-6" style="max-width: 30rem;height: 12rem;box-shadow: 4px -1px 0px -1px #a80c91;">
+              <!-- <div class="card-header">Abril-Junio 2020</div> -->
+              <div class="card-body">
+                <h5 class="card-title" style="color:#a80c91;">Empresas</h5>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                <p class="card-text">Número de empresas</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-3">
+            <div class="card text-dark bg-light mb-6" style="max-width: 30rem;height: 12rem;box-shadow: 4px -1px 0px -1px #009e00;">
+              <!-- <div class="card-header">Julio-Septiembre 2020</div> -->
+              <div class="card-body">
+                <h5 class="card-title" style="color:#009e00;">Número de trabajadores</h5>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                <p class="card-text">Trabajadores en el sistema</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-3">
+            <div class="card text-dark bg-light mb-6" style="max-width: 30rem;height: 12rem;box-shadow: 4px -1px 0px -1px #02bdb4;">
+              <!-- <div class="card-header">Octubre-Diciembre 2020</div> -->
+              <div class="card-body">
+                <h5 class="card-title" style="color:#02bdb4;">Card title</h5>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div> <!-- container -->
+      
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col mb-4">
+            <div class="card text-white bg-primary mb-6" style="max-width: 36rem; height: 27rem;">
+              <div class="card-header">Tabla 1</div>
+              <div class="card-body"><br><br><br>
+                <h1 class="card-title">TABLA</h1>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores aliquid, dolores distinctio similique excepturi omnis qui accusantium sit molestiae ad dignissimos voluptatem vitae! Ipsam molestiae culpa quia quas libero necessitatibus..</p>
+                <!-- <p><a href="trimestre1.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card text-white bg-primary mb-6" style="max-width: 36rem;height: 27rem;">
+              <div class="card-header">Tabla 2</div>
+              <div class="card-body"><br><br><br>
+                <h1 class="card-title">TABLA</h1>
+                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, fugit animi, fugiat fuga, iure quod adipisci a incidunt at dolorum ad est porro aut? Corporis nisi pariatur officiis sint repellat..</p>
+                <!-- <p><a href="trimestre2.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col mb-4">
+            <div class="card text-white bg-info mb-6" style="max-width: 36rem;height: 27rem;">
+              <div class="card-header">Julio-Septiembre 2020</div>
+              <div class="card-body"><br><br><br>
+                <h1 class="card-title">Tercer trimestre</h1>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto iste blanditiis quo ipsa doloremque ab, quia delectus at obcaecati quos nesciunt animi minus ratione ea dolore magnam harum? Excepturi?.</p>
+                <p><a href="trimestre3.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p>
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="col mb-4">
+            <div class="card text-white bg-info mb-6" style="max-width: 36rem;height: 27rem;">
+              <div class="card-header">Octubre-Diciembre 2020</div>
+              <div class="card-body"><br><br><br>
+                <h1 class="card-title">Cuarto trimestre</h1>
+                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur omnis eaque, harum, non, deserunt vel vero esse est suscipit mollitia accusamus voluptatum. Harum, quod sit praesentium aperiam non minus beatae!.</p>
+                <p><a href="trimestre4.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p>
+              </div>
+            </div>
+          </div> -->
+
+          
+        </div>
+      </div> <!-- container -->
+
+
+
+
+      <!-- <div class="container">
+
+        <div class="col mb-12">
+          <div class="card text-white bg-warning mb-12 align-middle" style="max-width: 96rem;">
+            <div class="card-header">Opción:</div>
+            <div class="card-body">
+              <h1 class="card-title">Modificar:</h1>
+              <p class="card-text">
+                <ul>
+                  <li>Actividad</li>
+                  <li>Responsables</li>
+                  <li>Medio de verificación</li>
+                </ul>
+              </p>
+              <a href="modificar.php" type="button" class="btn btn-primary btn-lg btn-block"><i class="fas fa-edit"></i> Modificar</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      </div>
 
 
     </main>

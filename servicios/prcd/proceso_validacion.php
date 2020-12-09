@@ -39,12 +39,12 @@ if ($resultado=mysqli_fetch_array($proceso)){
 
       if($resultado['priv']==1){
         
-        echo "<script type=\"text/javascript\">location.href='../dashboard.php';</script>";
+        echo "<script type=\"text/javascript\">location.href='../perfiles/super_usr/dashboard.php';</script>";
         }
     
     elseif($resultado['priv']==2){
 
-        echo "<script type=\"text/javascript\">location.href='../dashboard.php';</script>";
+        echo "<script type=\"text/javascript\">location.href='../perfiles/usr/dashboard.php';</script>";
         
     
     //echo "Sesión no exitosa";
@@ -53,9 +53,13 @@ if ($resultado=mysqli_fetch_array($proceso)){
 
     elseif($resultado['priv']==3){
 
-        echo "<script type=\"text/javascript\">location.href='../dashboard.php';</script>";
+        echo "<script type=\"text/javascript\">location.href='../perfiles/cliente/dashboard.php';</script>";
     }
     
+    elseif($resultado['priv']==4){
+
+        echo "<script type=\"text/javascript\">location.href='../perfiles/trabajador/dashboard.php';</script>";
+    }
 
 }
     

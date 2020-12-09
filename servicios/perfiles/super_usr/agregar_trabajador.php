@@ -25,7 +25,7 @@ session_start();
     // die();
 // }
 
-include('prcd/conn.php');
+include('../../prcd/conn.php');
 
 // variables de sesión
 
@@ -46,7 +46,7 @@ include('prcd/conn.php');
     <meta name="generator" content="">
     <title>Agregar | PROCYON</title>
 
-    <link rel="icon" type="image/png" href="img/icon.ico"/>
+    <link rel="icon" type="../../image/png" href="../../img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
@@ -70,7 +70,7 @@ include('prcd/conn.php');
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> -->
@@ -91,7 +91,7 @@ include('prcd/conn.php');
       
         
        
-        <a class="btn btn-outline-secondary" href="prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
+        <a class="btn btn-outline-secondary" href="../../prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
         
       </li>
   </ul>
@@ -126,7 +126,7 @@ include('prcd/conn.php');
             <a class="nav-link active" href="dashboard.php">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
-              Dashboard <span class="sr-only">(current)</span>
+              Dashboard (Súper Usuario)<span class="sr-only">(current)</span>
             </a>
           </li>
           <hr style="color: dimgrey;">
@@ -224,7 +224,7 @@ include('prcd/conn.php');
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
         <div class="container-fluid">
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
-          <form action="prcd/proceso_agregar_trabajador.php" method="POST">
+          <form action="../../prcd/proceso_agregar_trabajador.php" method="POST">
           <p><h2>Registro</h2></p>
           <hr class="my-4">
 
