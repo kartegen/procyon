@@ -259,11 +259,6 @@ include('prcd/conn.php');
                     
     </form>
 
-    <div class="btn-group mr-2" style="margin-bottom:7px;">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</button>
-          </div>
-
 <?php
         if (isset($_POST['busca']) && isset($_POST['busca2'])){ //es para saber cuando se presionó busca
 
@@ -288,6 +283,11 @@ include('prcd/conn.php');
             }
         //otro isset}
 ?>
+
+          <div class="btn-group mr-2" style="margin-bottom:7px;">
+            <a href="prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>&id2=<?php echo $busca2;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a>
+            <a href="" type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</a>
+          </div>
 
         <table class="table table-striped table-hover">
         <thead class="text-center">
