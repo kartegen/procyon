@@ -51,7 +51,7 @@ include('../../prcd/conn.php');
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -151,18 +151,32 @@ include('../../prcd/conn.php');
               <i class="fas fa-file-upload"></i> Cargar documento
             </a>
           </li>
-           <!-- <li class="nav-item">
-            <a class="nav-link" href="trimestre3.php">
-              <span data-feather="layers"></span>
-              Tercer trimestre
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Catálogo</span>
+            <a class="d-flex align-items-center text-muted" href="dashboard.php" aria-label="Add a new report">
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+
+          <li class="nav-item">
+            <a class="nav-link" href="revision_bitacora.php">
+              <!-- <span data-feather="layers"></span> -->
+               
+              <i class="fas fa-file-alt"></i> Trabajadores
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="trimestre4.php">
-              <span data-feather="layers"></span>
-              Cuarto trimestre
+         <li class="nav-item">
+            <a class="nav-link" href="agregar_bitacora.php">
+              <!-- <span data-feather="layers"></span> -->
+              <i class="fas fa-file-alt"></i> Empresas
             </a>
-          </li> -->
+          </li>
+         <li class="nav-item">
+            <a class="nav-link" href="agregar_bitacora.php">
+              <!-- <span data-feather="layers"></span> -->
+              <i class="fas fa-file-alt"></i> Usuarios
+            </a>
+          </li>
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
