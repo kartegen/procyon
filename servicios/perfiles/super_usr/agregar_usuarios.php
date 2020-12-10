@@ -159,20 +159,20 @@ include('../../prcd/conn.php');
           </h6>
 
           <li class="nav-item">
-            <a class="nav-link" href="revision_bitacora.php">
+            <a class="nav-link" href="catalogo_trabajadores.php">
               <!-- <span data-feather="layers"></span> -->
                
               <i class="fas fa-file-alt"></i> Trabajadores
             </a>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="agregar_bitacora.php">
+            <a class="nav-link" href="catalogo_empresas.php">
               <!-- <span data-feather="layers"></span> -->
               <i class="fas fa-file-alt"></i> Empresas
             </a>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="agregar_bitacora.php">
+            <a class="nav-link" href="catalogo_usuarios.php">
               <!-- <span data-feather="layers"></span> -->
               <i class="fas fa-file-alt"></i> Usuarios
             </a>
