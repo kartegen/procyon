@@ -254,7 +254,7 @@ include('../../prcd/conn.php');
                       <select class="custom-select" id="inputGroupSelect01" name="empresa" require>
                           <option selected>Seleccionar...</option>
                             <?php
-                            $tabla="SELECT * FROM clientes ORDER BY id ASC";
+                            $tabla="SELECT * FROM clientes WHERE status_sistema = 1 ORDER BY id ASC";
                             $resultadotabla = $conn->query($tabla);
                             $numero=0;
                             while($row = $resultadotabla->fetch_assoc()){

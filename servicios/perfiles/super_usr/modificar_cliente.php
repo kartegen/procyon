@@ -35,7 +35,7 @@ include('../../prcd/conn.php');
     $nombre = $_SESSION['nombre'];
     
     $id_consulta=$_REQUEST['id'];
-        $tabla="SELECT * FROM clientes WHERE status_sistema = '$id_consulta'";
+        $tabla="SELECT * FROM clientes WHERE id = '$id_consulta'";
         $resultadotabla = $conn->query($tabla);
         $row = $resultadotabla->fetch_assoc();
 ?>
@@ -246,6 +246,7 @@ include('../../prcd/conn.php');
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
           <p><h2>Registro</h2></p>
           <hr class="my-4">
+          <input type="hidden" value="<?php echo $row['id']?>" name="id">
 
               <div class="input-group mb-3 w-75">
                 <div class="input-group-prepend">
@@ -352,6 +353,24 @@ include('../../prcd/conn.php');
               <!-- <p> <h5>Fotografía</h5></p>
               <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p>
               <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button> -->
+
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Status en el sistema</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="status_sistema" require>
+                  <!-- <option selected value="<?php echo $row['status_sistema']?>"><?php echo $row['status_sistema']?></option> -->
+                  <option selected value="<?php echo $row['status_sistema']?>"><?php 
+                  if($row['status_sistema']==1){
+                    echo 'Activo';
+                }
+                elseif($row['status_sistema']==2){
+                    echo 'Inactivo';
+                }?></option>
+                            <option value="1">Activo</option>
+                            <option value="2">Inactivo</option>
+                </select>
+              </div>  
 
           <hr class="my-4">
           <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Actualizar empresa</button>

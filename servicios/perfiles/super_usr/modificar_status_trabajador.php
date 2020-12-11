@@ -35,7 +35,7 @@ include('../../prcd/conn.php');
     $nombre = $_SESSION['nombre'];
 
     $id_consulta=$_REQUEST['id'];
-        $tabla="SELECT * FROM trabajadores WHERE status_sistema = '$id_consulta'";
+        $tabla="SELECT * FROM trabajadores WHERE id = '$id_consulta'";
         $resultadotabla = $conn->query($tabla);
         $row = $resultadotabla->fetch_assoc();
 ?>

@@ -300,7 +300,7 @@ include('../../prcd/conn.php');
             // if($busca!="" && $busca2!=""){
             if($busca!=""){
                 // $tabla="SELECT * FROM bitacora WHERE fecha_reg_annio = '$busca' AND cliente ='$busca2' ORDER BY id ASC";
-                $tabla="SELECT * FROM trabajadores WHERE status_sistema = '$busca' ORDER BY id ASC";
+                $tabla="SELECT * FROM trabajadores WHERE status_sistema = '$busca'";
                 $resultadotabla = $conn->query($tabla);
                 // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
                 // $busqueda= $conn->query($sql);
@@ -360,7 +360,7 @@ include('../../prcd/conn.php');
                     if($row['status_sistema']==1){
                         echo '<td><center><span class="badge badge-success">Activo</span></center></td>';
                     }
-                    else{
+                    elseif($row['status_sistema']==2){
                         echo '<td><center><span class="badge badge-danger">Inactivo</span></center></td>';
                     }
 
