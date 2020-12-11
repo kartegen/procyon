@@ -245,6 +245,7 @@ include('../../prcd/conn.php');
           <form action="../../prcd/proceso_modificar_trabajador.php" method="POST">
           <p><h2>Datos del trabajador</h2></p>
           <hr class="my-4">
+          <input value="<?php echo $row['id']; ?>" name="id" type="hidden">
 
               <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
@@ -408,6 +409,24 @@ include('../../prcd/conn.php');
                 <label for="formFile" class="form-label">Cambiar imagen</label>
                 <input class="form-control" type="file" id="file1" name="file1" value="<?php echo $row['fecha_reg_annio']?>">
               </div>
+
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Status en el sistema</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="status_sistema" require>
+                  <!-- <option selected value="<?php echo $row['status_sistema']?>"><?php echo $row['status_sistema']?></option> -->
+                  <option selected value="<?php echo $row['status_sistema']?>"><?php 
+                  if($row['status_sistema']==1){
+                    echo 'Activo';
+                }
+                elseif($row['status_sistema']==2){
+                    echo 'Inactivo';
+                }?></option>
+                            <option value="1">Activo</option>
+                            <option value="2">Inactivo</option>
+                </select>
+              </div>      
 
           <hr class="my-4">
           <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Modificar trabajador</button>
