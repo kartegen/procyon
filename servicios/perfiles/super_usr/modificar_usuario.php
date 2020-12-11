@@ -35,7 +35,7 @@ include('../../prcd/conn.php');
     $nombre = $_SESSION['nombre'];
     
     $id_consulta=$_REQUEST['id'];
-        $tabla="SELECT * FROM usuarios WHERE status_sistema = '$id_consulta'";
+        $tabla="SELECT * FROM usuarios WHERE id = '$id_consulta'";
         $resultadotabla = $conn->query($tabla);
         $row = $resultadotabla->fetch_assoc();
 
@@ -242,11 +242,11 @@ include('../../prcd/conn.php');
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
         <div class="container-fluid">
-          <form action="../../prcd/proceso_agregar_usr.php" method="POST">
+          <form action="../../prcd/proceso_modificar_usr.php" method="POST">
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
           <p><h2>Registro</h2></p>
           <hr class="my-4">
-
+            <input type="hidden" name="id" value="<?php echo $row['id']?>">
               <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Nombre completo</span>
@@ -275,7 +275,7 @@ include('../../prcd/conn.php');
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Día</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01" name="fecha_dia" require>
+                <select class="custom-select" id="inputGroupSelect01" name="dia" require>
                   <option selected value="<?php echo $row['fecha_reg_dia']?>"><?php echo $row['fecha_reg_dia']?></option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -315,7 +315,7 @@ include('../../prcd/conn.php');
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Mes</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01" name="fecha_mes" require>
+                <select class="custom-select" id="inputGroupSelect01" name="mes" require>
                 <option selected value="<?php echo $row['fecha_reg_mes']?>"><?php echo $row['fecha_reg_mes']?></option>
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
@@ -336,7 +336,7 @@ include('../../prcd/conn.php');
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Año</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01" name="fecha_annio" require>
+                <select class="custom-select" id="inputGroupSelect01" name="annio" require>
                   <option selected value="<?php echo $row['fecha_reg_annio']?>"><?php echo $row['fecha_reg_annio']?></option>
                   <option value="2020" >2020</option>
                             <option value="2021">2021</option>
@@ -377,6 +377,30 @@ include('../../prcd/conn.php');
                   <option value="2">Usuario</option>
                   <option value="3">Empresa</option>
                   <option value="4">Trabajador</option>
+                </select>
+              </div>
+
+              <p> <h5>Status en el sistema</h5></p>
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Status</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="status_sistema" require>
+                  <option selected value="<?php echo $row['status_sistema']?>">
+                  
+                    <?php
+                        if($row['status_sistema']==1){
+                            echo 'Activo';
+                        }
+                        elseif($row['status_sistema']==2){
+                            echo 'Inactivo';
+                        }
+                       
+                    ?>
+                  
+                  </option>
+                  <option value="1">Activo</option>
+                  <option value="2">Inactivo</option>
                 </select>
               </div>
 

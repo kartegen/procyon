@@ -358,7 +358,23 @@ include('../../prcd/conn.php');
                     echo '<td><center>'.$numero.'</center></td>';
                     echo '<td><center>'.$row['usr'].'</center></td>';
                     echo '<td><center>'.$row['nombre_completo'].'</center></td>';
-                    echo '<td><center>'.$row['priv'].'</center></td>';
+                    //echo '<td><center>'.$row['priv'].'</center></td>';
+
+                    
+                        if($row['priv']==1){
+                            echo '<td><center>Súper Usuario</center></td>';
+                        }
+                        elseif($row['priv']==2){
+                          echo '<td><center>Usuario</center></td>';
+                        }
+                        elseif($row['priv']==3){
+                          echo '<td><center>Empresa</center></td>';
+                        }
+                        elseif($row['priv']==4){
+                          echo '<td><center>Trabajador</center></td>';
+                        }
+                    
+
                     echo '<td><center>'.$row['fecha_reg_dia'].'/'.$row['fecha_reg_mes'].'/'.$row['fecha_reg_annio'].'</center></td>';
                     
                     if($row['status_sistema']==1){
@@ -369,9 +385,10 @@ include('../../prcd/conn.php');
                     }
 
                     echo '<td><center><a href="modificar_usuario.php?id='.$row['id'].'" class="badge badge-primary">Modificar Status</a></center></td>';
-                    echo '<td><center><a href="modificar_eliminar_usuario.php?id='.$row['id'].'" class="badge badge-danger">Eliminar usuario</a></center></td>';
+                    //echo '<td><center><a href="modificar_eliminar_usuario.php?id='.$row['id'].'" class="badge badge-danger">Eliminar usuario</a></center></td>';
+                    echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
                     echo '<td><center><button type="button" class="badge badge-success" data-toggle="modal" data-target="#exampleModal'.$numero.'">Ver contraseña</button></center></td>';
-                    //modal
+                    //modal pass
                 
                     echo '<div class="modal fade" id="exampleModal'.$numero.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
                     echo '<div class="modal-dialog">';
@@ -387,6 +404,31 @@ include('../../prcd/conn.php');
                     echo '</div>';
                     echo '<div class="modal-footer">';
                     echo     '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
+                    // echo    ' <button type="button" class="btn btn-primary">Save changes</button>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    //fin modal
+
+                    //modal eliminar
+                
+                    echo '<div class="modal fade bg-danger" id="exampleModalEliminar'.$numero.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+                    echo '<div class="modal-dialog">';
+                    echo '<div class="modal-content">';
+                    echo '<div class="modal-header">';
+                    echo   ' <h5 class="modal-title" id="exampleModalLabel">¡AVISO!</h5>';
+                    echo     ' <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+                    echo     '<span aria-hidden="true">&times;</span>';
+                    echo     '</button>';
+                    echo '</div>';
+                    echo '<div class="modal-body">';
+                    echo '¿Eliminar usuario?';
+                    echo '</div>';
+                    echo '<div class="modal-footer">';
+                    echo     '<a href="../../prcd/proceso_eliminar_usr.php?id='.$row['id'].'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>';
+                    
+                    echo     '<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>';
                     // echo    ' <button type="button" class="btn btn-primary">Save changes</button>';
                     echo '</div>';
                     echo '</div>';
