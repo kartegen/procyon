@@ -25,7 +25,7 @@ session_start();
     // die();
 // }
 
-include('prcd/conn.php');
+include('/conn.php');
 
 // variables de sesión
 
