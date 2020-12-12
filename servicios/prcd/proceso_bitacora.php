@@ -78,7 +78,7 @@ VALUES('$empresa','$trabajador','$capturo','$fecha_dia','$fecha_mes','$fecha_ann
 
  if($resultado2){
 
- header ('Location:../revision_bitacora.php');
+  header ('Location:../perfiles/super_usr/revision_bitacora.php');
  }
 
  else{

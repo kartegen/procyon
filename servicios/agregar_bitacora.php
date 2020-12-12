@@ -239,7 +239,7 @@ include('prcd/conn.php');
                       <select class="custom-select" id="inputGroupSelect01" name="empresa" require>
                           <option selected>Seleccionar...</option>
                             <?php
-                            $tabla="SELECT * FROM clientes ORDER BY id ASC";
+                            $tabla="SELECT * FROM clientes WHERE status_sistema = 1 ORDER BY id ASC";
                             $resultadotabla = $conn->query($tabla);
                             $numero=0;
                             while($row = $resultadotabla->fetch_assoc()){
@@ -259,13 +259,13 @@ include('prcd/conn.php');
                 <option selected>Seleccionar...</option>
                 <!-- <option value="">Seleccionar...</option> -->
                     <?php
-                    $tabla="SELECT * FROM trabajadores ORDER BY id ASC";
-                    $resultadotabla = $conn->query($tabla);
-                    $numero=0;
-                    while($row = $resultadotabla->fetch_assoc()){
-                        $numero++;
+                    $tabla1="SELECT * FROM trabajadores WHERE status_sistema = 1 ORDER BY id ASC";
+                    $resultadotabla1 = $conn->query($tabla1);
+                    $numero1=0;
+                    while($row1 = $resultadotabla1->fetch_assoc()){
+                        $numero1++;
 
-                            echo '<option value="'.$row['id'].'">'.$row['nombre'].'</option>';
+                            echo '<option value="'.$row1['id'].'">'.$row1['nombre'].'</option>';
                     }
                      ?> <!-- fin loop tabla -->
                      

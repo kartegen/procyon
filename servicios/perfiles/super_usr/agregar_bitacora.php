@@ -274,7 +274,7 @@ include('../../prcd/conn.php');
                 <option selected>Seleccionar...</option>
                 <!-- <option value="">Seleccionar...</option> -->
                     <?php
-                    $tabla="SELECT * FROM trabajadores ORDER BY id ASC";
+                    $tabla="SELECT * FROM trabajadores WHERE status_sistema = 1 ORDER BY id ASC";
                     $resultadotabla = $conn->query($tabla);
                     $numero=0;
                     while($row = $resultadotabla->fetch_assoc()){

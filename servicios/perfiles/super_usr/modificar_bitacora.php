@@ -34,6 +34,11 @@ include('../../prcd/conn.php');
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
 
+    $id_consulta=$_REQUEST['id'];
+        $tabla="SELECT * FROM bitacora WHERE id = '$id_consulta'";
+        $resultadotabla = $conn->query($tabla);
+        $row_consulta = $resultadotabla->fetch_assoc();
+
 ?>
 
 <!doctype html>
@@ -44,16 +49,12 @@ include('../../prcd/conn.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>Bitácora | PROCYON</title>
+    <title>Agregar | PROCYON</title>
 
-    <link rel="icon" type="../../image/png" href="img/icon.ico"/>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
- 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
+    <link rel="icon" type="image/png" href="../../img/icon.ico"/>
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
@@ -136,7 +137,7 @@ include('../../prcd/conn.php');
               Dashboard (Súper Usuario)<span class="sr-only">(current)</span>
             </a>
           </li>
-          <hr style="color: dimgrey;">
+          <hr>
           
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>bitácora</span>
@@ -158,7 +159,7 @@ include('../../prcd/conn.php');
               <i class="fas fa-file-upload"></i> Cargar documento
             </a>
           </li>
-
+          
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Catálogo</span>
             <a class="d-flex align-items-center text-muted" href="dashboard.php" aria-label="Add a new report">
@@ -218,7 +219,7 @@ include('../../prcd/conn.php');
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 ">
-        <h1 class="display-4">Revisión bitácora</h1>
+        <h1 class="display-4"> Modificar datos de bitácora</h1>
         
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
@@ -240,22 +241,26 @@ include('../../prcd/conn.php');
 
       <!-- <hr style="color: dimgrey;"> -->
       <h2></h2>
-    <div class="container-fluid">
-    
-    <form name="formulario1" method="post" action="revision_bitacora.php" id="formulario1" class="form-search">
-	
-      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; margin-top:50px;">
-      
+    <div class="container-fluid ">
+
+
+      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; margin-top:100px; padding:45px;">
         <div class="container-fluid">
-                    
-                    <div class="input-group mb-3 w-50">
+          <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
+          <!-- <form action="../../prcd/proceso_bitacora.php" method="POST" enctype="multipart/form-data"> -->
+          <form action="../../prcd/proceso_modificar_bitacora.php" method="POST">
+          <p><h2>Modificar</h2></p>
+          <hr class="my-4">
+
+                <input type="hidden" value="<?php echo $row_consulta['id']?>" name="id">
+                <div class="input-group mb-3 w-50">
                       <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Empresa</label>
                       </div>
-                      <select class="custom-select" id="busca2" name="busca2" require>
-                          <option selected>Seleccionar...</option>
+                      <select class="custom-select" id="inputGroupSelect01" name="empresa" require>
+                          <option selected value="<?php echo $row_consulta['cliente']?>"><?php echo $row_consulta['cliente']?></option>
                             <?php
-                            $tabla1="SELECT * FROM clientes ORDER BY id ASC";
+                            $tabla1="SELECT * FROM clientes WHERE status_sistema = 1 ORDER BY id ASC";
                             $resultadotabla1 = $conn->query($tabla1);
                             $numero1=0;
                             while($row1 = $resultadotabla1->fetch_assoc()){
@@ -266,130 +271,132 @@ include('../../prcd/conn.php');
                             ?> <!-- fin loop tabla -->
                       </select>
                     </div>
-                    
-                    
-                    <div class="input-group mb-3 w-50">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="busca">Consulta por año</label>
-                      </div>
-                      <select class="custom-select" id="busca" name="busca">
-                          <option selected>Seleccionar...</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                      </select>
-                      <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-search"></i> Buscar</button>
-                    </div>
 
-                    
-    </form>
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Trabajador</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="trabajador" require>
+                <option selected value="<?php echo $row_consulta['asignado']?>"><?php echo $row_consulta['asignado']?></option>
+                <!-- <option value="">Seleccionar...</option> -->
+                    <?php
+                    $tabla="SELECT * FROM trabajadores WHERE status_sistema = 1 ORDER BY id ASC";
+                    $resultadotabla = $conn->query($tabla);
+                    $numero=0;
+                    while($row = $resultadotabla->fetch_assoc()){
+                        $numero++;
 
-<?php
-        if (isset($_POST['busca']) && isset($_POST['busca2'])){ //es para saber cuando se presionó busca
+                            echo '<option value="'.$row['id'].'">'.$row['nombre'].'</option>';
+                    }
+                     ?> <!-- fin loop tabla -->
+                     
+                </select>
+              </div>
 
-        $busca="";
-        $busca=$_POST['busca'];
-        
-        $busca2="";
-        $busca2=$_POST['busca2'];
-
-            if($busca!="" && $busca2!=""){
-                //$busqueda=mysqli_query("select * from ponencia where email like '%".$busca."' ");
-                $tabla="SELECT * FROM bitacora WHERE fecha_reg_annio = '$busca' AND cliente ='$busca2' ORDER BY id ASC";
-                $resultadotabla = $conn->query($tabla);
-                // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
-                // $busqueda= $conn->query($sql);
-                
-        //        $busqueda=mysqli_query($conn,"select * from ponencia where codigo like '%".$busca."' ");
-                
-            }
-            else{
-                echo"No haz agregado información";
-            }
-        //otro isset}
-?>
-
-          <div class="btn-group mr-2" style="margin-bottom:7px;">
-            <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>&id2=<?php echo $busca2;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a>
-            <a href="" type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</a>
-          </div>
-
-        <table class="table table-striped table-hover">
-        <thead class="text-center">
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Empresa</th>
-            <th scope="col">Trabajador</th>
-            <th scope="col">Capturó</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Archivo</th>
-            <th scope="col">Observaciones</th>
-            <th scope="col">Modificar</th>
-            <th scope="col">Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="text-center">
-        <?php
-
-            // $tabla="SELECT * FROM bitacora ORDER BY id ASC";
-            // $tabla="SELECT * FROM usr INNER JOIN archivos ON usr.codigo = archivos.codigo_usr WHERE usr.priv = 1 AND usr.tematica=1 ORDER BY usr.id ASC";
-            // $resultadotabla = $conn->query($tabla);
-            $numero=0;
-            while($row = $resultadotabla->fetch_assoc()){
-                $numero++;
-                
-                // echo '<tr>';
-                    echo '<td><center>'.$numero.'</center></td>';
-                    echo '<td><center>'.$row['cliente'].'</center></td>';
-                    echo '<td><center>'.$row['asignado'].'</center></td>';
-                    echo '<td><center>'.$row['capturo'].'</center></td>';
-                    echo '<td><center>'.$row['fecha_reg_dia'].'/'.$row['fecha_reg_mes'].'/'.$row['fecha_reg_annio'].'</center></td>';                  
-                    echo '<td><center><a href="'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
-                    echo '<td><center>'.$row['descripcion'].'</center></td>';
-                    echo '<td><center><a href="modificar_bitacora.php?id='.$row['id'].'" class="badge badge-primary">Modificar Status</a></center></td>';
-                    echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
-
-                    //modal eliminar
-                
-                    echo '<div class="modal fade bg-danger" id="exampleModalEliminar'.$numero.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
-                    echo '<div class="modal-dialog">';
-                    echo '<div class="modal-content">';
-                    echo '<div class="modal-header">';
-                    echo   ' <h5 class="modal-title" id="exampleModalLabel">¡AVISO!</h5>';
-                    echo     ' <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-                    echo     '<span aria-hidden="true">&times;</span>';
-                    echo     '</button>';
-                    echo '</div>';
-                    echo '<div class="modal-body">';
-                    echo '¿Eliminar bitácora?';
-                    echo '</div>';
-                    echo '<div class="modal-footer">';
-                    echo     '<a href="../../prcd/proceso_eliminar_bitacora.php?id='.$row['id'].'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>';
-                    
-                    echo     '<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>';
-                    // echo    ' <button type="button" class="btn btn-primary">Save changes</button>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    //fin modal
-                    
-                echo '</tr>';
+              <!-- capturó se tiene que tomar de la variable de sesión -->
             
-            }
-        }//isset
-        ?>
+              <p> <h5>Fecha de registro</h5></p>
 
-            
-        </tbody>
-        </table>
+              <div class="input-group mb-3 w-25">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Día</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="dia" require>
+                  <option selected value="<?php echo $row_consulta['fecha_reg_dia']?>"><?php echo $row_consulta['fecha_reg_dia']?></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+              </div>
 
+              <div class="input-group mb-3 w-25">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Mes</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="mes" require>
+                <option selected value="<?php echo $row_consulta['fecha_reg_mes']?>"><?php echo $row_consulta['fecha_reg_mes']?></option>
+                  <option value="1">Enero</option>
+                  <option value="2">Febrero</option>
+                  <option value="3">Marzo</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Mayo</option>
+                  <option value="6">Junio</option>
+                  <option value="7">Julio</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                </select>
+              </div>
+
+              <div class="input-group mb-3 w-25">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Año</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="annio" require>
+                  <option selected value="<?php echo $row_consulta['fecha_reg_annio']?>"><?php echo $row_consulta['fecha_reg_annio']?></option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                </select>
+              </div>
+
+              <!-- <p> <h5>Documento</h5></p>
+              <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p> -->
+
+              <!-- <div class="mb-3 w-50">
+                <label for="formFile" class="form-label">Cargar archivo</label>
+                <input class="form-control" type="file" id="file1" name="file1">
+              </div> -->
+
+              <div class="input-group mb-3 w-75">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Observaciones</span>
+                </div>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="observaciones" value="<?php echo $row_consulta['descripcion']?>" required>
+              </div>
+
+
+              <!-- <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button> -->
+
+          <hr class="my-4">
+          <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Registrar bitácora</button>
+          <a class="btn btn-danger btn-lg" href="javascript:history.back()" role="button"> <i class="fas fa-times"></i> Cancelar</a>
+          </form>        
         </div>
       </div>
 

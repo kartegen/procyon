@@ -317,7 +317,7 @@ include('../../prcd/conn.php');
                   <label class="input-group-text" for="inputGroupSelect01">Mes</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="mes" require>
-                  <option selectedvalue="<?php echo $row['fecha_reg_mes']?>"><?php echo $row['fecha_reg_mes']?></option>
+                  <option selected value="<?php echo $row['fecha_reg_mes']?>"><?php echo $row['fecha_reg_mes']?></option>
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
                   <option value="3">Marzo</option>
@@ -338,7 +338,7 @@ include('../../prcd/conn.php');
                   <label class="input-group-text" for="inputGroupSelect01">Año</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="annio" require>
-                  <option selectedvalue="<?php echo $row['fecha_reg_annio']?>"><?php echo $row['fecha_reg_annio']?></option>
+                  <option selected value="<?php echo $row['fecha_reg_annio']?>"><?php echo $row['fecha_reg_annio']?></option>
                   <option value="2020">2020</option>
                             <option value="2021">2021</option>
                             <option value="2022">2022</option>

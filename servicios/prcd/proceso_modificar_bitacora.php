@@ -8,9 +8,18 @@ date_default_timezone_set('America/Mexico_City');
                 //   $fecha_actual=strftime("%Y-%m-%d");
                 //   $hora_actual=strftime("%H:%M:%S");
 
-$id= $_REQUEST['id'];
+$id= $_POST['id'];
+$empresa = $_POST['empresa'];
+$trabajador = $_POST['trabajador'];
+$fecha_dia = $_POST['dia'];
+$fecha_mes = $_POST['mes'];
+$fecha_annio = $_POST['annio'];
+$observaciones = $_POST['observaciones'];
+//aquí variable de sesión
 
-$sql_2="DELETE FROM clientes
+$sql_2="UPDATE bitacora
+SET cliente='$empresa', asignado='$trabajador',fecha_reg_dia='$fecha_dia',fecha_reg_mes='$fecha_mes',
+fecha_reg_annio='$fecha_annio',descripcion='$observaciones'
 WHERE id='$id'";
 
 // $sql_2="INSERT INTO trabajadores(nombre,curp,nss,tipo_sangre,fecha_reg_dia,fecha_reg_mes,fecha_reg_annio,fecha_sistema,status_sistema) 
@@ -19,7 +28,7 @@ $resultado2= $conn->query($sql_2);
 
 if($resultado2){
 
-    header ('Location:../perfiles/super_usr/catalogo_empresas.php');
+    header ('Location:../perfiles/super_usr/revision_bitacora.php');
 }
 
 else{
