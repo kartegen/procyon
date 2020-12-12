@@ -24,7 +24,7 @@ $resultado2= $conn->query($sql_2);
 
 if($resultado2){
 
-    header ('Location:../dashboard.php');
+    header ('Location:../perfiles/super_usr/dashboard.php');
 }
 
 else{

@@ -372,6 +372,32 @@ include('../../prcd/conn.php');
                 </select>
               </div>  
 
+
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Vincular usuario</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="usr_vinculado" require>
+                  <?php
+                      $usr_vinculado1 = $row['usr_vinculado'];
+                      $consulta_vinculado1="SELECT id,nombre_completo FROM usuarios WHERE id = '$usr_vinculado1'";
+                      $resultado_vinculado1 = $conn->query($consulta_vinculado1);
+                      $cliente_resultado1 = $resultado_vinculado1->fetch_assoc();
+                    echo '<option selected value="'.$cliente_resultado1['id'].'">'.$cliente_resultado1['nombre_completo'].'</option>';
+                  ?>
+                
+                    
+                          <?php
+                            $tabla_vinculado="SELECT * FROM usuarios WHERE status_sistema = 1 AND priv = 3  ORDER BY id ASC";
+                            $resultadotabla1_vinculado = $conn->query($tabla_vinculado);
+                            while($row1_vinculado = $resultadotabla1_vinculado->fetch_assoc()){
+
+                                    echo '<option value="'.$row1_vinculado['id'].'">'.$row1_vinculado['nombre_completo'].'</option>';
+                            }
+                            ?> <!-- fin loop tabla -->
+                </select>
+              </div>
+
           <hr class="my-4">
           <button class="btn btn-primary btn-lg" role="submit"> <i class="far fa-save"></i> Actualizar empresa</button>
           <a class="btn btn-danger btn-lg" href="javascript:history.back()" role="button"> <i class="fas fa-times"></i> Cancelar</a>

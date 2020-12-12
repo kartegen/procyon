@@ -187,26 +187,26 @@ include('../../prcd/conn.php');
       
         <div class="container-fluid">
                     
-                    <div class="input-group mb-3 w-50">
+                    <!-- <div class="input-group mb-3 w-50">
                       <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Empresa</label>
                       </div>
                       <select class="custom-select" id="busca2" name="busca2" require>
                           <option selected>Seleccionar...</option>
-                            <?php
-                            $tabla="SELECT * FROM clientes ORDER BY id ASC";
-                            $resultadotabla = $conn->query($tabla);
-                            $numero=0;
-                            while($row = $resultadotabla->fetch_assoc()){
-                                $numero++;
+                           <?php
+                            // $tabla="SELECT * FROM clientes ORDER BY id ASC";
+                            // $resultadotabla = $conn->query($tabla);
+                            // $numero=0;
+                            // while($row = $resultadotabla->fetch_assoc()){
+                            //     $numero++;
 
-                                    echo '<option value="'.$row['id'].'">'.$row['cliente'].'</option>';
-                            }
-                            ?> <!-- fin loop tabla -->
-                      </select>
-                    </div>
+                            //         echo '<option value="'.$row['id'].'">'.$row['cliente'].'</option>';
+                            // }
+                            ?> fin loop tabla -->
+                      <!-- </select> -->
+                    <!-- </div> -->
                     
-                    
+<!--                     
                     <div class="input-group mb-3 w-50">
                       <div class="input-group-prepend">
                         <label class="input-group-text" for="busca">Consulta por año</label>
@@ -223,40 +223,17 @@ include('../../prcd/conn.php');
                             <option value="2027">2027</option>
                       </select>
                       <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-search"></i> Buscar</button>
-                    </div>
+                    </div> -->
 
                     
     </form>
 
-<?php
-        if (isset($_POST['busca']) && isset($_POST['busca2'])){ //es para saber cuando se presionó busca
 
-        $busca="";
-        $busca=$_POST['busca'];
-        
-        $busca2="";
-        $busca2=$_POST['busca2'];
 
-            if($busca!="" && $busca2!=""){
-                //$busqueda=mysqli_query("select * from ponencia where email like '%".$busca."' ");
-                $tabla="SELECT * FROM bitacora WHERE fecha_reg_annio = '$busca' AND cliente ='$busca2' ORDER BY id ASC";
-                $resultadotabla = $conn->query($tabla);
-                // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
-                // $busqueda= $conn->query($sql);
-                
-        //        $busqueda=mysqli_query($conn,"select * from ponencia where codigo like '%".$busca."' ");
-                
-            }
-            else{
-                echo"No haz agregado información";
-            }
-        //otro isset}
-?>
-
-          <div class="btn-group mr-2" style="margin-bottom:7px;">
+          <!-- <div class="btn-group mr-2" style="margin-bottom:7px;">
             <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>&id2=<?php echo $busca2;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a>
             <a href="" type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</a>
-          </div>
+          </div> -->
 
         <table class="table table-striped table-hover">
         <thead class="text-center">
@@ -277,6 +254,8 @@ include('../../prcd/conn.php');
             // $tabla="SELECT * FROM bitacora ORDER BY id ASC";
             // $tabla="SELECT * FROM usr INNER JOIN archivos ON usr.codigo = archivos.codigo_usr WHERE usr.priv = 1 AND usr.tematica=1 ORDER BY usr.id ASC";
             // $resultadotabla = $conn->query($tabla);
+            $tabla = "SELECT * FROM bitacora INNER JOIN clientes ON clientes.id = bitacora.capturo WHERE clientes.usr_vinculado='$id'";
+            $resultadotabla = $conn->query($tabla);
             $numero=0;
             while($row = $resultadotabla->fetch_assoc()){
                 $numero++;
@@ -295,7 +274,7 @@ include('../../prcd/conn.php');
                 echo '</tr>';
             
             }
-        }//isset
+        //}//isset
         ?>
 
             

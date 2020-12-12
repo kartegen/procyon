@@ -14,13 +14,14 @@ $domicilio = $_POST['domicilio'];
 $fecha_dia = $_POST['dia'];
 $fecha_mes = $_POST['mes'];
 $fecha_annio = $_POST['annio'];
+$usr_vinculado = $_POST['usr_vinculado'];
 // $fecha_sistema = strftime("%Y-%m-%d,%H:%M:%S");
 // $priv = ;
 $status_sistema = $_POST['status_sistema'];
 
 $sql_2="UPDATE clientes
 SET cliente='$cliente', domicilio='$domicilio',fecha_reg_dia='$fecha_dia',fecha_reg_mes='$fecha_mes',
-fecha_reg_annio='$fecha_annio',status_sistema='$status_sistema'
+fecha_reg_annio='$fecha_annio',status_sistema='$status_sistema',usr_vinculado=$usr_vinculado
 WHERE id='$id'";
 
 // $sql_2="INSERT INTO trabajadores(nombre,curp,nss,tipo_sangre,fecha_reg_dia,fecha_reg_mes,fecha_reg_annio,fecha_sistema,status_sistema) 

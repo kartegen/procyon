@@ -339,6 +339,7 @@ include('../../prcd/conn.php');
                 <th scope="col">Domicilio</th>
                 <th scope="col">Fecha registro</th>
                 <th scope="col">Status</th>
+                <th scope="col">Usuario vinculado</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Eliminar</th>
             </tr>
@@ -353,6 +354,7 @@ include('../../prcd/conn.php');
             $numero=0;
             while($row = $resultadotabla->fetch_assoc()){
                 $numero++;
+                $usr_vinculado = $row['usr_vinculado'];
                 
                 // echo '<tr>';
                     echo '<td><center>'.$numero.'</center></td>';
@@ -366,6 +368,11 @@ include('../../prcd/conn.php');
                     else{
                         echo '<td><center><span class="badge badge-danger">Inactivo</span></center></td>';
                     }
+                    
+                    $consulta_vinculado="SELECT id,nombre_completo FROM usuarios WHERE id = '$usr_vinculado'";
+                    $resultado_vinculado = $conn->query($consulta_vinculado);
+                    $cliente_resultado = $resultado_vinculado->fetch_assoc();
+                    echo '<td><center>'.$cliente_resultado['nombre_completo'].'</center></td>';
 
                     echo '<td><center><a href="modificar_cliente.php?id='.$row['id'].'" class="badge badge-primary">Modificar Status</a></center></td>';
                     //echo '<td><center><a href="modificar_eliminar_cliente.php?id='.$row['id'].'" class="badge badge-danger">Eliminar usuario</a></center></td>';

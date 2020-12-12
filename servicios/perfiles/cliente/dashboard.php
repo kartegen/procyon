@@ -33,6 +33,10 @@ include('../../prcd/conn.php');
     $id = $_SESSION['id'];
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
+    // $tabla = "SELECT * FROM bitacora INNER JOIN clientes ON clientes.id = bitacora.capturo WHERE clientes.usr_vinculado='$id'";
+    $tabla = "SELECT * FROM bitacora INNER JOIN clientes ON clientes.id = bitacora.cliente WHERE clientes.usr_vinculado='$id'";
+    $resultadotabla = $conn->query($tabla);
+    $row = $resultadotabla->fetch_assoc();
 
 ?>
 
@@ -126,7 +130,7 @@ include('../../prcd/conn.php');
             <a class="nav-link active" href="dashboard.html">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
-              Dashboard (Perfil Empresa)<span class="sr-only">(current)</span>
+              Dashboard (Perfil <?php echo $row['cliente']?>)<span class="sr-only">(current)</span>
             </a>
           </li>
           <hr style="color: dimgrey;">
@@ -145,24 +149,7 @@ include('../../prcd/conn.php');
               <i class="fas fa-file-alt"></i> Revisión
             </a>
           </li>
-         <!-- <li class="nav-item">
-            <a class="nav-link" href="agregar_bitacora.php">
-             
-              <i class="fas fa-file-upload"></i> Cargar documento
-            </a>
-          </li> -->
-           <!-- <li class="nav-item">
-            <a class="nav-link" href="trimestre3.php">
-              <span data-feather="layers"></span>
-              Tercer trimestre
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="trimestre4.php">
-              <span data-feather="layers"></span>
-              Cuarto trimestre
-            </a>
-          </li> -->
+        
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -212,130 +199,9 @@ include('../../prcd/conn.php');
       
       <!-- card -->
 
-      <div class="container-fluid">
-        <div class="row row-cols-2 row-cols-md-4">
-          <div class="col mb-3">
-            <div class="card text-dark bg-light mb-6" style="max-width: 30rem; height: 12rem; box-shadow: 4px -1px 0px -1px #005eff;">
-              <!-- <div class="card-header">Enero-Marzo 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title text-primary">Documentos cargados en el sistema</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Número de documentos ###.</p>
-                <!-- <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a> -->
-              </div>
-            </div>
-          </div>
-          <div class="col mb-3">
-            <div class="card text-dark bg-light mb-6" style="max-width: 30rem;height: 12rem;box-shadow: 4px -1px 0px -1px #a80c91;">
-              <!-- <div class="card-header">Abril-Junio 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title" style="color:#a80c91;">Empresas</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Número de empresas</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-3">
-            <div class="card text-dark bg-light mb-6" style="max-width: 30rem;height: 12rem;box-shadow: 4px -1px 0px -1px #009e00;">
-              <!-- <div class="card-header">Julio-Septiembre 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title" style="color:#009e00;">Número de trabajadores</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Trabajadores en el sistema</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-          </div>
-          <div class="col mb-3">
-            <div class="card text-dark bg-light mb-6" style="max-width: 30rem;height: 12rem;box-shadow: 4px -1px 0px -1px #02bdb4;">
-              <!-- <div class="card-header">Octubre-Diciembre 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title" style="color:#02bdb4;">Card title</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-          </div>
 
-          
-        </div>
-      </div> <!-- container -->
       
-      <div class="container">
-        <div class="row row-cols-1 row-cols-md-2">
-          <div class="col mb-4">
-            <div class="card text-white bg-primary mb-6" style="max-width: 36rem; height: 27rem;">
-              <div class="card-header">Tabla 1</div>
-              <div class="card-body"><br><br><br>
-                <h1 class="card-title">TABLA</h1>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores aliquid, dolores distinctio similique excepturi omnis qui accusantium sit molestiae ad dignissimos voluptatem vitae! Ipsam molestiae culpa quia quas libero necessitatibus..</p>
-                <!-- <p><a href="trimestre1.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
-              </div>
-            </div>
-          </div>
-          <div class="col mb-4">
-            <div class="card text-white bg-primary mb-6" style="max-width: 36rem;height: 27rem;">
-              <div class="card-header">Tabla 2</div>
-              <div class="card-body"><br><br><br>
-                <h1 class="card-title">TABLA</h1>
-                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, fugit animi, fugiat fuga, iure quod adipisci a incidunt at dolorum ad est porro aut? Corporis nisi pariatur officiis sint repellat..</p>
-                <!-- <p><a href="trimestre2.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
-              </div>
-            </div>
-          </div>
-          <!-- <div class="col mb-4">
-            <div class="card text-white bg-info mb-6" style="max-width: 36rem;height: 27rem;">
-              <div class="card-header">Julio-Septiembre 2020</div>
-              <div class="card-body"><br><br><br>
-                <h1 class="card-title">Tercer trimestre</h1>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto iste blanditiis quo ipsa doloremque ab, quia delectus at obcaecati quos nesciunt animi minus ratione ea dolore magnam harum? Excepturi?.</p>
-                <p><a href="trimestre3.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="col mb-4">
-            <div class="card text-white bg-info mb-6" style="max-width: 36rem;height: 27rem;">
-              <div class="card-header">Octubre-Diciembre 2020</div>
-              <div class="card-body"><br><br><br>
-                <h1 class="card-title">Cuarto trimestre</h1>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur omnis eaque, harum, non, deserunt vel vero esse est suscipit mollitia accusamus voluptatum. Harum, quod sit praesentium aperiam non minus beatae!.</p>
-                <p><a href="trimestre4.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p>
-              </div>
-            </div>
-          </div> -->
-
-          
-        </div>
-      </div> <!-- container -->
-
-
-
-
-      <!-- <div class="container">
-
-        <div class="col mb-12">
-          <div class="card text-white bg-warning mb-12 align-middle" style="max-width: 96rem;">
-            <div class="card-header">Opción:</div>
-            <div class="card-body">
-              <h1 class="card-title">Modificar:</h1>
-              <p class="card-text">
-                <ul>
-                  <li>Actividad</li>
-                  <li>Responsables</li>
-                  <li>Medio de verificación</li>
-                </ul>
-              </p>
-              <a href="modificar.php" type="button" class="btn btn-primary btn-lg btn-block"><i class="fas fa-edit"></i> Modificar</a>
-            </div>
-          </div>
-        </div>
-      </div> -->
+      
 
       </div>
 
