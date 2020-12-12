@@ -322,10 +322,11 @@ include('../../prcd/conn.php');
 
           
                 
-          
+          <!-- REPORTE PDF -->
             <!-- <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>&id2=<?php echo $busca2;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a> -->
-            <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a>
-            <a href="" type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</a>
+            <!-- <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a>
+            <a href="" type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</a> -->
+          <!-- FIN REPORTE PDF -->
 
            
           </div>

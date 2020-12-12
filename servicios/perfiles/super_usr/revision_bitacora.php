@@ -313,11 +313,12 @@ include('../../prcd/conn.php');
             }
         //otro isset}
 ?>
-
-          <div class="btn-group mr-2" style="margin-bottom:7px;">
+          <!-- REPORTES EN PDF -->
+          <!-- <div class="btn-group mr-2" style="margin-bottom:7px;">
             <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>&id2=<?php echo $busca2;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a>
             <a href="" type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</a>
-          </div>
+          </div> -->
+           <!-- FIN REPORTES EN PDF -->
 
         <table class="table table-striped table-hover">
         <thead class="text-center">
@@ -343,16 +344,32 @@ include('../../prcd/conn.php');
             $numero=0;
             while($row = $resultadotabla->fetch_assoc()){
                 $numero++;
+                $cliente = $row['cliente'];
+                $asignado = $row['asignado'];
+                $capturo = $row['capturo'];
                 
                 // echo '<tr>';
                     echo '<td><center>'.$numero.'</center></td>';
-                    echo '<td><center>'.$row['cliente'].'</center></td>';
-                    echo '<td><center>'.$row['asignado'].'</center></td>';
-                    echo '<td><center>'.$row['capturo'].'</center></td>';
+                    //echo '<td><center>'.$row['cliente'].'</center></td>';
+                    $consulta1="SELECT id,cliente FROM clientes WHERE id = '$cliente'";
+                    $resultado_consulta1 = $conn->query($consulta1);
+                    $cliente_resultado = $resultado_consulta1->fetch_assoc();
+                    echo '<td><center>'.$cliente_resultado['cliente'].'</center></td>';
+
+                    $consulta2="SELECT id,nombre FROM trabajadores WHERE id = '$asignado'";
+                    $resultado_consulta2 = $conn->query($consulta2);
+                    $trabajador_resultado = $resultado_consulta2->fetch_assoc();
+                    echo '<td><center>'.$trabajador_resultado['nombre'].'</center></td>';
+
+                    $consulta3="SELECT id,nombre_completo FROM usuarios WHERE id = '$capturo'";
+                    $resultado_consulta3 = $conn->query($consulta3);
+                    $usuario_resultado = $resultado_consulta3->fetch_assoc();
+                    echo '<td><center>'.$usuario_resultado['nombre_completo'].'</center></td>';
+
                     echo '<td><center>'.$row['fecha_reg_dia'].'/'.$row['fecha_reg_mes'].'/'.$row['fecha_reg_annio'].'</center></td>';                  
                     echo '<td><center><a href="'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
                     echo '<td><center>'.$row['descripcion'].'</center></td>';
-                    echo '<td><center><a href="modificar_bitacora.php?id='.$row['id'].'" class="badge badge-primary">Modificar Status</a></center></td>';
+                    echo '<td><center><a href="modificar_bitacora.php?id='.$row['id'].'" class="badge badge-primary">Modificar</a></center></td>';
                     echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
 
                     //modal eliminar
