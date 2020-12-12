@@ -204,7 +204,7 @@ include('../../prcd/conn.php');
           <p class="lead">PROCYON</p>
           <hr class="my-4">
           <p>Cargar documentos</p>
-          <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a>
+          <a class="btn btn-primary btn-lg" href="revision_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Revisar a bitácora -></a>
         </div>
       </div>
 

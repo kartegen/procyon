@@ -200,89 +200,66 @@ include('../../prcd/conn.php');
       <!-- card -->
 
       <div class="container-fluid">
-        <div class="row row-cols-2 row-cols-md-4">
-          <div class="col mb-3">
+        <div class="row row-cols-2 row-cols-md-3">
+          <div class="col mb-4">
             <div class="card text-dark bg-light mb-6" style="max-width: 30rem; height: 12rem; box-shadow: 4px -1px 0px -1px #005eff;">
               <!-- <div class="card-header">Enero-Marzo 2020</div> -->
               <div class="card-body">
-                <h5 class="card-title text-primary">Documentos cargados en el sistema</h5>
+                <h5 class="card-title text-primary">Número de documentos</h5>
                 <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Número de documentos ###.</p>
-                <!-- <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a> -->
+                <p class="card-text">cargados en el sistema
+                
+                <?php
+                  $contar="SELECT * FROM bitacora";
+                  $resultado_contar = $conn->query($contar);
+                  $contar_bitacora = mysqli_num_rows($resultado_contar);
+                  echo '<h1 class="display-5 text-center">'.$contar_bitacora.'</h1>';
+                ?>
+                
+                
+                </p>
+               
               </div>
             </div>
           </div>
-          <div class="col mb-3">
+          <div class="col mb-4">
             <div class="card text-dark bg-light mb-6" style="max-width: 30rem;height: 12rem;box-shadow: 4px -1px 0px -1px #a80c91;">
               <!-- <div class="card-header">Abril-Junio 2020</div> -->
               <div class="card-body">
                 <h5 class="card-title" style="color:#a80c91;">Empresas</h5>
                 <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
                 <p class="card-text">Número de empresas</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <?php
+                  $contar2="SELECT * FROM clientes WHERE status_sistema = 1";
+                  $resultado_contar2 = $conn->query($contar2);
+                  $contar_bitacora2 = mysqli_num_rows($resultado_contar2);
+                  echo '<h1 class="display-5 text-center">'.$contar_bitacora2.'</h1>';
+                ?>
               </div>
             </div>
           </div>
-          <div class="col mb-3">
+          <div class="col mb-4">
             <div class="card text-dark bg-light mb-6" style="max-width: 30rem;height: 12rem;box-shadow: 4px -1px 0px -1px #009e00;">
               <!-- <div class="card-header">Julio-Septiembre 2020</div> -->
               <div class="card-body">
                 <h5 class="card-title" style="color:#009e00;">Número de trabajadores</h5>
                 <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
                 <p class="card-text">Trabajadores en el sistema</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <?php
+                  $contar3="SELECT * FROM trabajadores WHERE status_sistema = 1";
+                  $resultado_contar3 = $conn->query($contar3);
+                  $contar_bitacora3 = mysqli_num_rows($resultado_contar3);
+                  echo '<h1 class="display-5 text-center">'.$contar_bitacora3.'</h1>';
+                ?>
               </div>
             </div>
           </div>
-          <div class="col mb-3">
-            <div class="card text-dark bg-light mb-6" style="max-width: 30rem;height: 12rem;box-shadow: 4px -1px 0px -1px #02bdb4;">
-              <!-- <div class="card-header">Octubre-Diciembre 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title" style="color:#02bdb4;">Card title</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-          </div>
+          
 
           
         </div>
       </div> <!-- container -->
-      
-      <div class="container">
-        <div class="row row-cols-1 row-cols-md-2">
-          <div class="col mb-4">
-            <div class="card text-white bg-primary mb-6" style="max-width: 36rem; height: 27rem;">
-              <div class="card-header">Tabla 1</div>
-              <div class="card-body"><br><br><br>
-                <h1 class="card-title">TABLA</h1>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores aliquid, dolores distinctio similique excepturi omnis qui accusantium sit molestiae ad dignissimos voluptatem vitae! Ipsam molestiae culpa quia quas libero necessitatibus..</p>
-                <!-- <p><a href="trimestre1.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
-              </div>
-            </div>
-          </div>
-          <div class="col mb-4">
-            <div class="card text-white bg-primary mb-6" style="max-width: 36rem;height: 27rem;">
-              <div class="card-header">Tabla 2</div>
-              <div class="card-body"><br><br><br>
-                <h1 class="card-title">TABLA</h1>
-                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, fugit animi, fugiat fuga, iure quod adipisci a incidunt at dolorum ad est porro aut? Corporis nisi pariatur officiis sint repellat..</p>
-                <!-- <p><a href="trimestre2.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
-              </div>
-            </div>
-          </div>
-
-
-          
-        </div>
-      </div> <!-- container -->
-
-
+  
       </div>
 
 

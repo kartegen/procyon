@@ -345,6 +345,27 @@ include('../../prcd/conn.php');
                 </select>
               </div>
 
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Vincular usuario</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="usr_vinculado" require>
+                  <option selected>Seleccionar...</option>
+                          <?php
+                            $tabla_vinculado="SELECT * FROM usuarios WHERE status_sistema = 1 AND priv = 3  ORDER BY id ASC";
+                            $resultadotabla1_vinculado = $conn->query($tabla_vinculado);
+                            while($row1_vinculado = $resultadotabla1_vinculado->fetch_assoc()){
+
+                                    echo '<option value="'.$row1_vinculado['id'].'">'.$row1_vinculado['nombre_completo'].'</option>';
+                            }
+                            ?> <!-- fin loop tabla -->
+                </select>
+              </div>
+
+              
+
+
+
               <!-- <p> <h5>Fotografía</h5></p>
               <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p>
               <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button> -->
