@@ -194,18 +194,7 @@ include('../../prcd/conn.php');
           </a>
         </h6>
         <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_trabajador.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-user-plus"></i> Agregar Trabajador
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_cliente.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-building"></i> Agregar Empresa
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="agregar_usuarios.php">
               <!-- <span data-feather="file-text"></span> -->
@@ -252,16 +241,16 @@ include('../../prcd/conn.php');
                       <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Empresa</label>
                       </div>
-                      <select class="custom-select" id="busca2" name="busca2" require>
+                      <select class="custom-select" id="busca" name="busca" require>
                           <option selected>Seleccionar...</option>
                             <?php
-                            $tabla1="SELECT * FROM clientes ORDER BY id ASC";
+                            $tabla1="SELECT * FROM usuarios WHERE priv = 3 AND status_sistema = 1 ORDER BY id ASC";
                             $resultadotabla1 = $conn->query($tabla1);
                             $numero1=0;
                             while($row1 = $resultadotabla1->fetch_assoc()){
                                 $numero1++;
 
-                                    echo '<option value="'.$row1['id'].'">'.$row1['cliente'].'</option>';
+                                    echo '<option value="'.$row1['id'].'">'.$row1['nombre_completo'].'</option>';
                             }
                             ?> <!-- fin loop tabla -->
                       </select>
@@ -270,18 +259,20 @@ include('../../prcd/conn.php');
                     
                     <div class="input-group mb-3 w-50">
                       <div class="input-group-prepend">
-                        <label class="input-group-text" for="busca">Consulta por año</label>
+                        <label class="input-group-text" for="busca">Consulta por semana</label>
                       </div>
-                      <select class="custom-select" id="busca" name="busca">
+                      <select class="custom-select" id="busca2" name="busca2" require>
                           <option selected>Seleccionar...</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
+                            <?php
+                            $tabla1_semana="SELECT * FROM semanas ORDER BY id ASC";
+                            $resultadotabla1_semana = $conn->query($tabla1_semana);
+                            $numero1_semana=0;
+                            while($row1_semana = $resultadotabla1_semana->fetch_assoc()){
+                                $numero1_semana++;
+
+                                    echo '<option value="'.$row1_semana['id'].'">'.$row1_semana['semana'].' '.$row1_semana['inicia'].' '.$row1_semana['fin'].'</option>';
+                            }
+                            ?> <!-- fin loop tabla -->
                       </select>
                       <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-search"></i> Buscar</button>
                     </div>
@@ -300,7 +291,7 @@ include('../../prcd/conn.php');
 
             if($busca!="" && $busca2!=""){
                 //$busqueda=mysqli_query("select * from ponencia where email like '%".$busca."' ");
-                $tabla="SELECT * FROM bitacora WHERE fecha_reg_annio = '$busca' AND cliente ='$busca2' ORDER BY id ASC";
+                $tabla="SELECT * FROM bitacora WHERE semana = '$busca2' AND cliente ='$busca' ORDER BY id ASC";
                 $resultadotabla = $conn->query($tabla);
                 // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
                 // $busqueda= $conn->query($sql);
@@ -326,10 +317,10 @@ include('../../prcd/conn.php');
             <th scope="col">#</th>
             <th scope="col">Empresa</th>
             <th scope="col">Trabajador</th>
-            <th scope="col">Capturó</th>
+            <!-- <th scope="col">Capturó</th> -->
             <th scope="col">Fecha</th>
             <th scope="col">Archivo</th>
-            <th scope="col">Observaciones</th>
+            <!-- <th scope="col">Observaciones</th> -->
             <th scope="col">Modificar</th>
             <th scope="col">Eliminar</th>
             </tr>
@@ -351,24 +342,24 @@ include('../../prcd/conn.php');
                 // echo '<tr>';
                     echo '<td><center>'.$numero.'</center></td>';
                     //echo '<td><center>'.$row['cliente'].'</center></td>';
-                    $consulta1="SELECT id,cliente FROM clientes WHERE id = '$cliente'";
+                    $consulta1="SELECT id,nombre_completo FROM usuarios WHERE id = '$cliente' AND priv = 3";
                     $resultado_consulta1 = $conn->query($consulta1);
                     $cliente_resultado = $resultado_consulta1->fetch_assoc();
-                    echo '<td><center>'.$cliente_resultado['cliente'].'</center></td>';
+                    echo '<td><center>'.$cliente_resultado['nombre_completo'].'</center></td>';
 
-                    $consulta2="SELECT id,nombre FROM trabajadores WHERE id = '$asignado'";
+                    $consulta2="SELECT id,nombre_completo FROM usuarios WHERE id = '$asignado' AND priv = 4";
                     $resultado_consulta2 = $conn->query($consulta2);
                     $trabajador_resultado = $resultado_consulta2->fetch_assoc();
-                    echo '<td><center>'.$trabajador_resultado['nombre'].'</center></td>';
+                    echo '<td><center>'.$trabajador_resultado['nombre_completo'].'</center></td>';
 
-                    $consulta3="SELECT id,nombre_completo FROM usuarios WHERE id = '$capturo'";
-                    $resultado_consulta3 = $conn->query($consulta3);
-                    $usuario_resultado = $resultado_consulta3->fetch_assoc();
-                    echo '<td><center>'.$usuario_resultado['nombre_completo'].'</center></td>';
+                    // $consulta3="SELECT id,nombre_completo FROM usuarios WHERE id = '$capturo'";
+                    // $resultado_consulta3 = $conn->query($consulta3);
+                    // $usuario_resultado = $resultado_consulta3->fetch_assoc();
+                    // echo '<td><center>'.$usuario_resultado['nombre_completo'].'</center></td>';
 
-                    echo '<td><center>'.$row['fecha_reg_dia'].'/'.$row['fecha_reg_mes'].'/'.$row['fecha_reg_annio'].'</center></td>';                  
-                    echo '<td><center><a href="'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
-                    echo '<td><center>'.$row['descripcion'].'</center></td>';
+                    echo '<td><center>'.$row['semana'].'</center></td>';                  
+                    echo '<td><center><a href="../../'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
+                    // echo '<td><center>'.$row['descripcion'].'</center></td>';
                     echo '<td><center><a href="modificar_bitacora.php?id='.$row['id'].'" class="badge badge-primary">Modificar</a></center></td>';
                     echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
 

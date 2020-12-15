@@ -191,18 +191,7 @@ include('../../prcd/conn.php');
           </a>
         </h6>
         <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_trabajador.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-user-plus"></i> Agregar Trabajador
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_cliente.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-building"></i> Agregar Empresa
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="agregar_usuarios.php">
               <!-- <span data-feather="file-text"></span> -->

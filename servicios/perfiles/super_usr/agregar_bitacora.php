@@ -190,18 +190,7 @@ include('../../prcd/conn.php');
           </a>
         </h6>
         <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_trabajador.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-user-plus"></i> Agregar Trabajador
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_cliente.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-building"></i> Agregar Empresa
-            </a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="agregar_usuarios.php">
               <!-- <span data-feather="file-text"></span> -->
@@ -254,13 +243,13 @@ include('../../prcd/conn.php');
                       <select class="custom-select" id="inputGroupSelect01" name="empresa" require>
                           <option selected>Seleccionar...</option>
                             <?php
-                            $tabla="SELECT * FROM clientes WHERE status_sistema = 1 ORDER BY id ASC";
+                            $tabla="SELECT * FROM usuarios WHERE priv = 3 AND status_sistema = 1 ORDER BY id ASC";
                             $resultadotabla = $conn->query($tabla);
                             $numero=0;
                             while($row = $resultadotabla->fetch_assoc()){
                                 $numero++;
 
-                                    echo '<option value="'.$row['id'].'">'.$row['cliente'].'</option>';
+                                    echo '<option value="'.$row['id'].'">'.$row['nombre_completo'].'</option>';
                             }
                             ?> <!-- fin loop tabla -->
                       </select>
@@ -274,13 +263,34 @@ include('../../prcd/conn.php');
                 <option selected>Seleccionar...</option>
                 <!-- <option value="">Seleccionar...</option> -->
                     <?php
-                    $tabla="SELECT * FROM trabajadores WHERE status_sistema = 1 ORDER BY id ASC";
-                    $resultadotabla = $conn->query($tabla);
-                    $numero=0;
-                    while($row = $resultadotabla->fetch_assoc()){
-                        $numero++;
+                    $tabla_trabajadores="SELECT * FROM usuarios WHERE priv = 4 AND status_sistema = 1 ORDER BY id ASC";
+                    $resultadotabla_trabajadores = $conn->query($tabla_trabajadores);
+                    $numero_trabajadores=0;
+                    while($row_trabajadores = $resultadotabla_trabajadores->fetch_assoc()){
+                        $numero_trabajadores++;
 
-                            echo '<option value="'.$row['id'].'">'.$row['nombre'].'</option>';
+                            echo '<option value="'.$row_trabajadores['id'].'">'.$row_trabajadores['nombre_completo'].'</option>';
+                    }
+                     ?> <!-- fin loop tabla -->
+                     
+                </select>
+              </div>
+
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Semana a registrar</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="semana" require>
+                <option selected>Seleccionar semana 2021...</option>
+                <!-- <option value="">Seleccionar...</option> -->
+                    <?php
+                    $tabla_semana="SELECT * FROM semanas WHERE annio = 2021 ORDER BY id ASC";
+                    $resultadotabla_semana = $conn->query($tabla_semana);
+                    $numero_semana=0;
+                    while($row_semana = $resultadotabla_semana->fetch_assoc()){
+                        $numero_semana++;
+
+                            echo '<option value="'.$row_semana['id'].'">'.$row_semana['semana'].' ('.$row_semana['inicia'].'-'.$row_semana['fin'].')</option>';
                     }
                      ?> <!-- fin loop tabla -->
                      
@@ -289,7 +299,7 @@ include('../../prcd/conn.php');
 
               <!-- capturó se tiene que tomar de la variable de sesión -->
             
-              <p> <h5>Fecha de registro</h5></p>
+              <!-- <p> <h5>Fecha de registro</h5></p>
 
               <div class="input-group mb-3 w-25">
                 <div class="input-group-prepend">
@@ -367,7 +377,7 @@ include('../../prcd/conn.php');
                   <option value="2026">2026</option>
                   <option value="2027">2027</option>
                 </select>
-              </div>
+              </div> -->
 
               <!-- <p> <h5>Documento</h5></p>
               <p><img src="img/img_profile.png" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p> -->

@@ -29,9 +29,10 @@ $codigo = generarCodigo(9); // genera un código de 9 caracteres de longitud.
 
 $empresa = $_POST['empresa'];
 $trabajador = $_POST['trabajador'];
-$fecha_dia = $_POST['dia'];
-$fecha_mes = $_POST['mes'];
-$fecha_annio = $_POST['annio'];
+// $fecha_dia = $_POST['dia'];
+// $fecha_mes = $_POST['mes'];
+// $fecha_annio = $_POST['annio'];
+$semana = $_POST['semana'];
 $fecha_sistema = strftime("%Y-%m-%d,%H:%M:%S");
 $observaciones = $_POST['observaciones'];
 $capturo=1;
@@ -53,11 +54,11 @@ $capturo=1;
               //move_uploaded_file($_FILES["file1"]["tmp_name"],"archivos/". $codigo .'_'.$_FILES['file1']['name'])
               //    //echo "$fileName upload is complete";
               
-              if(move_uploaded_file($_FILES["file1"]["tmp_name"],"../files/". $link .'_'. $codigo .'_'.$_FILES['file1']['name'])){
+              if(move_uploaded_file($_FILES["file1"]["tmp_name"],"../files/".$link.'_'.$codigo.'_'.$_FILES['file1']['name'])){
                 //   echo "$fileName carga completa";
                   
                   // $ruta_pptx = "../files/". $link .'_'. $codigo .'_'.$_FILES['file1']['name'];
-                  $ruta_pptx = "./files/". $link .'_'. $codigo .'_'.$_FILES['file1']['name'];
+                  $ruta_pptx = "./files/".$link.'_'.$codigo.'_'.$_FILES['file1']['name'];
                  
                 //   $sqlinsert= "UPDATE archivos SET link1='$ruta_pptx' WHERE id_usr='$curp'";
                 //   $resultado2= $conn->query($sqlinsert);
@@ -72,8 +73,8 @@ $capturo=1;
               }
 
  // inicia consulta
- $sql_2="INSERT INTO bitacora(cliente,asignado,capturo,fecha_reg_dia,fecha_reg_mes,fecha_reg_annio,fecha_sistema,url_file,descripcion) 
-VALUES('$empresa','$trabajador','$capturo','$fecha_dia','$fecha_mes','$fecha_annio','$fecha_sistema','$ruta_pptx','$observaciones')";
+ $sql_2="INSERT INTO bitacora(cliente,asignado,capturo,semana,fecha_sistema,url_file,descripcion) 
+VALUES('$empresa','$trabajador','$capturo','$semana','$fecha_sistema','$ruta_pptx','$observaciones')";
  $resultado2= $conn->query($sql_2);
 
  if($resultado2){
@@ -84,7 +85,7 @@ VALUES('$empresa','$trabajador','$capturo','$fecha_dia','$fecha_mes','$fecha_ann
  else{
 
  echo 'No se registró la actividad';
- error(query($resultado2));
+//  error(query($resultado2));
  }
  // fin consulta
 

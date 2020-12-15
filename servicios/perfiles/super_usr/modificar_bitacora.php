@@ -195,18 +195,7 @@ include('../../prcd/conn.php');
           </a>
         </h6>
         <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_trabajador.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-user-plus"></i> Agregar Trabajador
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_cliente.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-building"></i> Agregar Empresa
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="agregar_usuarios.php">
               <!-- <span data-feather="file-text"></span> -->
@@ -260,7 +249,7 @@ include('../../prcd/conn.php');
                       <select class="custom-select" id="inputGroupSelect01" name="empresa" require>
                           <option selected value="<?php echo $row_consulta['cliente']?>"><?php echo $row_consulta['cliente']?></option>
                             <?php
-                            $tabla1="SELECT * FROM clientes WHERE status_sistema = 1 ORDER BY id ASC";
+                            $tabla1="SELECT * FROM usuarios WHERE priv = 3 AND status_sistema = 1 ORDER BY id ASC";
                             $resultadotabla1 = $conn->query($tabla1);
                             $numero1=0;
                             while($row1 = $resultadotabla1->fetch_assoc()){
@@ -280,13 +269,13 @@ include('../../prcd/conn.php');
                 <option selected value="<?php echo $row_consulta['asignado']?>"><?php echo $row_consulta['asignado']?></option>
                 <!-- <option value="">Seleccionar...</option> -->
                     <?php
-                    $tabla="SELECT * FROM trabajadores WHERE status_sistema = 1 ORDER BY id ASC";
+                    $tabla="SELECT * FROM usuarios WHERE priv = 4 AND status_sistema = 1 ORDER BY id ASC";
                     $resultadotabla = $conn->query($tabla);
                     $numero=0;
                     while($row = $resultadotabla->fetch_assoc()){
                         $numero++;
 
-                            echo '<option value="'.$row['id'].'">'.$row['nombre'].'</option>';
+                            echo '<option value="'.$row['id'].'">'.$row['nombre_completo'].'</option>';
                     }
                      ?> <!-- fin loop tabla -->
                      
@@ -297,81 +286,23 @@ include('../../prcd/conn.php');
             
               <p> <h5>Fecha de registro</h5></p>
 
-              <div class="input-group mb-3 w-25">
+              <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Día</label>
+                  <label class="input-group-text" for="inputGroupSelect01">Semana a modificar</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01" name="dia" require>
-                  <option selected value="<?php echo $row_consulta['fecha_reg_dia']?>"><?php echo $row_consulta['fecha_reg_dia']?></option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-                  <option value="22">22</option>
-                  <option value="23">23</option>
-                  <option value="24">24</option>
-                  <option value="25">25</option>
-                  <option value="26">26</option>
-                  <option value="27">27</option>
-                  <option value="28">28</option>
-                  <option value="29">29</option>
-                  <option value="30">30</option>
-                  <option value="31">31</option>
-                </select>
-              </div>
+                <select class="custom-select" id="inputGroupSelect01" name="semana" require>
+                <option selected value="<?php echo $row_consulta['asignado']?>"><?php echo $row_consulta['asignado']?></option>                
+                    <?php
+                    $tabla_semana="SELECT * FROM semanas WHERE annio = 2021 ORDER BY id ASC";
+                    $resultadotabla_semana = $conn->query($tabla_semana);
+                    $numero_semana=0;
+                    while($row_semana = $resultadotabla_semana->fetch_assoc()){
+                        $numero_semana++;
 
-              <div class="input-group mb-3 w-25">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Mes</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" name="mes" require>
-                <option selected value="<?php echo $row_consulta['fecha_reg_mes']?>"><?php echo $row_consulta['fecha_reg_mes']?></option>
-                  <option value="1">Enero</option>
-                  <option value="2">Febrero</option>
-                  <option value="3">Marzo</option>
-                  <option value="4">Abril</option>
-                  <option value="5">Mayo</option>
-                  <option value="6">Junio</option>
-                  <option value="7">Julio</option>
-                  <option value="8">Agosto</option>
-                  <option value="9">Septiembre</option>
-                  <option value="10">Octubre</option>
-                  <option value="11">Noviembre</option>
-                  <option value="12">Diciembre</option>
-                </select>
-              </div>
-
-              <div class="input-group mb-3 w-25">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Año</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" name="annio" require>
-                  <option selected value="<?php echo $row_consulta['fecha_reg_annio']?>"><?php echo $row_consulta['fecha_reg_annio']?></option>
-                  <option value="2020">2020</option>
-                  <option value="2021">2021</option>
-                  <option value="2022">2022</option>
-                  <option value="2023">2023</option>
-                  <option value="2024">2024</option>
-                  <option value="2025">2025</option>
-                  <option value="2026">2026</option>
-                  <option value="2027">2027</option>
+                            echo '<option value="'.$row_semana['id'].'">'.$row_semana['semana'].' ('.$row_semana['inicia'].'-'.$row_semana['fin'].')</option>';
+                    }
+                     ?> <!-- fin loop tabla -->
+                     
                 </select>
               </div>
 
@@ -383,12 +314,7 @@ include('../../prcd/conn.php');
                 <input class="form-control" type="file" id="file1" name="file1">
               </div> -->
 
-              <div class="input-group mb-3 w-75">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Observaciones</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="observaciones" value="<?php echo $row_consulta['descripcion']?>" required>
-              </div>
+              
 
 
               <!-- <button type="button" class="btn btn-primary btn-sm"><i class="far fa-id-badge"></i> Cargar imagen</button> -->

@@ -11,15 +11,15 @@ date_default_timezone_set('America/Mexico_City');
 $id= $_POST['id'];
 $empresa = $_POST['empresa'];
 $trabajador = $_POST['trabajador'];
-$fecha_dia = $_POST['dia'];
-$fecha_mes = $_POST['mes'];
-$fecha_annio = $_POST['annio'];
-$observaciones = $_POST['observaciones'];
+// $fecha_dia = $_POST['dia'];
+// $fecha_mes = $_POST['mes'];
+// $fecha_annio = $_POST['annio'];
+$semana = $_POST['semana'];
+// $observaciones = $_POST['observaciones'];
 //aquí variable de sesión
 
 $sql_2="UPDATE bitacora
-SET cliente='$empresa', asignado='$trabajador',fecha_reg_dia='$fecha_dia',fecha_reg_mes='$fecha_mes',
-fecha_reg_annio='$fecha_annio',descripcion='$observaciones'
+SET cliente='$empresa', asignado='$trabajador',semana='$semana'
 WHERE id='$id'";
 
 // $sql_2="INSERT INTO trabajadores(nombre,curp,nss,tipo_sangre,fecha_reg_dia,fecha_reg_mes,fecha_reg_annio,fecha_sistema,status_sistema) 
