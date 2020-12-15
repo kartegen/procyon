@@ -237,173 +237,31 @@ include('../../prcd/conn.php');
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); margin-top:100px; padding:45px;">
         <div class="container-fluid">
-
-        <!-- isset -->
-        <form name="privilegios_usr" method="post" action="agregar_usuarios.php" id="formulario1" class="form-search">
-          <p> <h5>Tipo de privilegio</h5></p>
-              <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Privilegio</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" name="priv" require>
-                  <!-- <option selected>Seleccionar...</option> -->
-                  <?php
-                  
-                  if ($_POST['priv']!=""){
-                    if($_POST['priv']==1){
-                      echo '<option selected value="'.$_POST['priv'].'">Súper Usuario</option>';
-                    }
-                    elseif($_POST['priv']==2){
-                      echo '<option selected value="'.$_POST['priv'].'">Usuario</option>';
-                    }
-                    elseif($_POST['priv']==3){
-                      echo '<option selected value="'.$_POST['priv'].'">Empresa</option>';
-                    }
-                    elseif($_POST['priv']==4){
-                      echo '<option selected value="'.$_POST['priv'].'">Trabajador</option>';
-                    }
-                      
-
-                  }
-                  else{
-                    echo '<option selected>Seleccionar...</option>';
-
-                  }
-
-                  ?>
-                  <option value="1">Súper Usuario</option>
-                  <option value="2">Usuario</option>
-                  <option value="3">Empresa</option>
-                  <option value="4">Trabajador</option>
-                </select>
-                <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-hand-pointer"></i> Tipo de perfil</button>
-
-              </div>
-
-              <hr class="my-4">
-             
-            </form>
-
-              <?php
-        if (isset($_POST['priv'])){ //es para saber cuando se presionó busca
-
-            $busca="";
-            $busca=$_POST['priv'];
-        
-        
-            if($busca!=""){
-                
-                if($busca==1){
-                  echo '<p><h2>Registro de Súper Usuario</h2></p>';
-
-                }         
-                elseif($busca==2){
-                    echo '<p><h2>Registro de Usuario</h2></p>';
-                }
-                elseif($busca==3){
-                  echo '<p><h2>Registro de Empresa</h2></p>';
-              }
-              elseif($busca==4){
-                echo '<p><h2>Registro de Trabajador</h2></p>';
-              }
-
-              }
-            //otro isset}
-    ?>
-              <!-- fin isset -->
-
-              <?php
-              // echo '1';
-             //}//isset
-        ?>
-
-
-          <form action="../../prcd/proceso_agregar_usr.php" method="POST" enctype="multipart/form-data" name="formulario_agregar">
+          <form action="../../prcd/proceso_agregar_usr.php" method="POST">
           <!-- <h1 class="display-4">Bienvenido al sistema de bitácoras</h1> -->
-          <!-- <p><h2>Registro</h2></p> -->
+          <p><h2>Registro</h2></p>
           <hr class="my-4">
-              <input type="hidden" value="<?php echo $busca ?>" name="busca">
+
               <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Nombre completo</span>
                 </div>
                 <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre" require>
               </div>
-
-              <?php
-              if($busca==3){
-                echo '<div class="input-group mb-3 w-75">';
-                echo '<div class="input-group-prepend">';
-                echo '<span class="input-group-text" id="basic-addon3">Domicilio</span>';
-                echo '</div>';
-                echo '<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="domicilio">';
-                echo '</div>';
-              }
-                elseif($busca==4){
-
-                  echo '<div class="input-group mb-3 w-50">';
-                  echo '<div class="input-group-prepend">';
-                  echo '<span class="input-group-text" id="basic-addon3">NSS</span>';
-                  echo '</div>';
-                  echo '<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nss">';
-                  echo '</div>';
-                  
-                  echo '<div class="input-group mb-3 w-50">';
-                  echo '<div class="input-group-prepend">';
-                  echo '<span class="input-group-text" id="basic-addon3">CURP</span>';
-                  echo '</div>';
-                  echo '<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="curp">';
-                  echo '</div>';
-                
-                echo '<div class="input-group mb-3 w-50">';
-                echo '<div class="input-group-prepend">';
-                echo '<label class="input-group-text" for="inputGroupSelect01">Tipo de sangre</label>';
-                echo '</div>';
-                echo '<select class="custom-select" id="inputGroupSelect01" name="tipo_sangre" require>';
-                echo '<option selected>Seleccionar...</option>';
-                echo '<option value="1">O negativo</option>';
-                echo '<option value="2">O positivo</option>';
-                echo '<option value="3">A negativo</option>';
-                echo '<option value="4">A positivo</option>';
-                echo '<option value="5">B negativo</option>';
-                echo '<option value="6">B positivo</option>';
-                echo '<option value="7">AB negativo</option>';
-                echo '<option value="8">AB positivo</option>';
-                echo '</select>';
-                echo '</div>';
-                
-                echo ' <hr class="my-4">';
-
-                
-                echo ' <div class="form-group">';
-                echo '<label for="exampleFormControlFile1">Cargar fotografía</label>';
-                echo '<input type="file" class="form-control-file" id="exampleFormControlFile1" name="file1">';
-                echo '</div>';
-                echo ' <hr class="my-4">';
-              }
-              ?>
-
-              <?php
-                if($busca!=='4'){
-                  echo '<div class="input-group mb-3 w-50">';
-                  echo '<div class="input-group-prepend">';
-                  echo '<span class="input-group-text" id="basic-addon3">Usuario</span>';
-                  echo '</div>';
-                  echo ' <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="usr" require>';
-                  echo '</div>';
-
-
-                  echo '<div class="input-group mb-3 w-50">';
-                  echo '<div class="input-group-prepend">';
-                  echo '<span class="input-group-text" id="basic-addon3">Password</span>';
-                  echo '</div>';
-                  echo '<input type="password" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="pwd" require>';
-                  echo '</div>';
-                }
-
-                }//isset
-              ?>
               
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Usuario</span>
+                </div>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="usr" require>
+              </div>
+
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Password</span>
+                </div>
+                <input type="password" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="pwd" require>
+              </div>
 
             
               <p> <h5>Fecha de registro</h5></p>
@@ -486,8 +344,19 @@ include('../../prcd/conn.php');
                 </select>
               </div>
 
-           
-             
+              <p> <h5>Tipo de privilegio</h5></p>
+              <div class="input-group mb-3 w-50">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Privilegio</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" name="priv" require>
+                  <option selected>Seleccionar...</option>
+                  <option value="1">Súper Usuario</option>
+                  <option value="2">Usuario</option>
+                  <option value="3">Empresa</option>
+                  <option value="4">Trabajador</option>
+                </select>
+              </div>
 
           <hr class="my-4">
           <!-- <a class="btn btn-primary btn-lg" href="prcd/proceso_agregar_usuario.php" role="button"> <i class="far fa-save"></i> Registrar usuario</a> -->
