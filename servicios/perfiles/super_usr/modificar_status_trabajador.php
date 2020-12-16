@@ -35,7 +35,7 @@ include('../../prcd/conn.php');
     $nombre = $_SESSION['nombre'];
 
     $id_consulta=$_REQUEST['id'];
-        $tabla="SELECT * FROM trabajadores WHERE id = '$id_consulta'";
+        $tabla="SELECT * FROM usuarios WHERE id = '$id_consulta'";
         $resultadotabla = $conn->query($tabla);
         $row = $resultadotabla->fetch_assoc();
 ?>
@@ -240,7 +240,7 @@ include('../../prcd/conn.php');
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Nombre completo</span>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre" value="<?php echo $row['nombre']; ?>" require>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nombre" value="<?php echo $row['nombre_completo']; ?>" require>
               </div>
               
               <div class="input-group mb-3 w-50">
@@ -256,13 +256,6 @@ include('../../prcd/conn.php');
                 </div>
                 <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="nss" value="<?php echo $row['nss']; ?>" required>
               </div>
-
-              <!-- <div class="input-group mb-3 w-50">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">Tipo de sangre</span>
-                </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="tipo_sangre" require>
-              </div> -->
 
               <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">
@@ -358,7 +351,47 @@ include('../../prcd/conn.php');
                   <label class="input-group-text" for="inputGroupSelect01">Mes</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="mes" require>
-                <option selected value="<?php echo $row['fecha_reg_dia']?>"><?php echo $row['fecha_reg_mes']?></option>
+                <option selected value="<?php echo $row['fecha_reg_mes']?>"><?php 
+                
+                
+                if($row['fecha_reg_mes']==1){
+                  echo 'Enero';
+                }
+                elseif($row['fecha_reg_mes']==2){
+                    echo 'Febrero';
+                }
+                elseif($row['fecha_reg_mes']==3){
+                    echo 'Marzo';
+                }
+                elseif($row['fecha_reg_mes']==4){
+                    echo 'Abril';
+                }
+                elseif($row['fecha_reg_mes']==5){
+                    echo 'Mayo';
+                }
+                elseif($row['fecha_reg_mes']==6){
+                    echo 'Junio';
+                }
+                elseif($row['fecha_reg_mes']==7){
+                    echo 'Julio';
+                }
+                elseif($row['fecha_reg_mes']==8){
+                    echo 'Agosto';
+                }
+                elseif($row['fecha_reg_mes']==9){
+                    echo 'Septiembre';
+                }
+                elseif($row['fecha_reg_mes']==10){
+                    echo 'Octubre';
+                }
+                elseif($row['fecha_reg_mes']==11){
+                    echo 'Noviembre';
+                }
+                elseif($row['fecha_reg_mes']==12){
+                    echo 'Diciembre';
+                }
+                
+                ?></option>
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
                   <option value="3">Marzo</option>
@@ -391,13 +424,6 @@ include('../../prcd/conn.php');
                 </select>
               </div>
 
-              <p> <h5>Fotografía</h5></p>
-              <p><img src="<?php echo $row['url_foto']?>" alt="..." class="img-thumbnail" width="350px" heigth="70px"></p>
-              
-              <div class="mb-3 w-50">
-                <label for="formFile" class="form-label">Cambiar imagen</label>
-                <input class="form-control" type="file" id="file1" name="file1" value="<?php echo $row['fecha_reg_annio']?>">
-              </div>
 
               <div class="input-group mb-3 w-50">
                 <div class="input-group-prepend">

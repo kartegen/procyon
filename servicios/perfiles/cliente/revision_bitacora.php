@@ -30,7 +30,7 @@ include('../../prcd/conn.php');
 // variables de sesión
 
     $usuario = $_SESSION['usr'];
-    $id = $_SESSION['id'];
+    $id_session = $_SESSION['id'];
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
 
@@ -129,7 +129,7 @@ include('../../prcd/conn.php');
             <a class="nav-link active" href="dashboard.php">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
-              Dashboard (Perfil Empresa)<span class="sr-only">(current)</span>
+              Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
           <hr style="color: dimgrey;">
@@ -187,53 +187,63 @@ include('../../prcd/conn.php');
       
         <div class="container-fluid">
                     
-                    <!-- <div class="input-group mb-3 w-50">
+                  
+                    
+                    
+                    <div class="input-group mb-3 w-50">
                       <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Empresa</label>
+                        <label class="input-group-text" for="busca">Consulta por semana</label>
                       </div>
                       <select class="custom-select" id="busca2" name="busca2" require>
                           <option selected>Seleccionar...</option>
-                           <?php
-                            // $tabla="SELECT * FROM clientes ORDER BY id ASC";
-                            // $resultadotabla = $conn->query($tabla);
-                            // $numero=0;
-                            // while($row = $resultadotabla->fetch_assoc()){
-                            //     $numero++;
+                            <?php
+                            $tabla1_semana="SELECT * FROM semanas ORDER BY id ASC";
+                            $resultadotabla1_semana = $conn->query($tabla1_semana);
+                            $numero1_semana=0;
+                            while($row1_semana = $resultadotabla1_semana->fetch_assoc()){
+                                $numero1_semana++;
 
-                            //         echo '<option value="'.$row['id'].'">'.$row['cliente'].'</option>';
-                            // }
-                            ?> fin loop tabla -->
-                      <!-- </select> -->
-                    <!-- </div> -->
-                    
-<!--                     
-                    <div class="input-group mb-3 w-50">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="busca">Consulta por año</label>
-                      </div>
-                      <select class="custom-select" id="busca" name="busca">
-                          <option selected>Seleccionar...</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
+                                    echo '<option value="'.$row1_semana['id'].'">'.$row1_semana['semana'].' '.$row1_semana['inicia'].' '.$row1_semana['fin'].'</option>';
+                            }
+                            ?> <!-- fin loop tabla -->
                       </select>
                       <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-search"></i> Buscar</button>
-                    </div> -->
+                    </div>
 
                     
     </form>
 
+<?php
+        if (isset($_POST['busca2'])){ //es para saber cuando se presionó busca
 
+        // $busca="";
+        // $busca=$_POST['busca'];
+        $busca=$id_session;
+        
+        $busca2="";
+        $busca2=$_POST['busca2'];
 
+            if($busca!="" && $busca2!=""){
+                //$busqueda=mysqli_query("select * from ponencia where email like '%".$busca."' ");
+                $tabla="SELECT * FROM bitacora WHERE semana = '$busca2' AND cliente ='$busca' ORDER BY id ASC";
+                $resultadotabla = $conn->query($tabla);
+                // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
+                // $busqueda= $conn->query($sql);
+                
+        //        $busqueda=mysqli_query($conn,"select * from ponencia where codigo like '%".$busca."' ");
+                
+            }
+            else{
+                echo"No haz agregado información";
+            }
+        //otro isset}
+?>
+          <!-- REPORTES EN PDF -->
           <!-- <div class="btn-group mr-2" style="margin-bottom:7px;">
             <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>&id2=<?php echo $busca2;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a>
             <a href="" type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</a>
           </div> -->
+           <!-- FIN REPORTES EN PDF -->
 
         <table class="table table-striped table-hover">
         <thead class="text-center">
@@ -241,10 +251,12 @@ include('../../prcd/conn.php');
             <th scope="col">#</th>
             <th scope="col">Empresa</th>
             <th scope="col">Trabajador</th>
-            <th scope="col">Capturó</th>
-            <th scope="col">Fecha</th>
+            <!-- <th scope="col">Capturó</th> -->
+            <th scope="col">Semana</th>
             <th scope="col">Archivo</th>
-            <th scope="col">Observaciones</th>
+            <th scope="col">Evidencia</th>
+            <!-- <th scope="col">Modificar</th>
+            <th scope="col">Eliminar</th> -->
             </tr>
         </thead>
         <tbody>
@@ -254,27 +266,72 @@ include('../../prcd/conn.php');
             // $tabla="SELECT * FROM bitacora ORDER BY id ASC";
             // $tabla="SELECT * FROM usr INNER JOIN archivos ON usr.codigo = archivos.codigo_usr WHERE usr.priv = 1 AND usr.tematica=1 ORDER BY usr.id ASC";
             // $resultadotabla = $conn->query($tabla);
-            $tabla = "SELECT * FROM bitacora INNER JOIN clientes ON clientes.id = bitacora.capturo WHERE clientes.usr_vinculado='$id'";
-            $resultadotabla = $conn->query($tabla);
             $numero=0;
             while($row = $resultadotabla->fetch_assoc()){
                 $numero++;
+                $cliente = $row['cliente'];
+                $asignado = $row['asignado'];
+                $capturo = $row['capturo'];
                 
                 // echo '<tr>';
                     echo '<td><center>'.$numero.'</center></td>';
-                    echo '<td><center>'.$row['cliente'].'</center></td>';
-                    echo '<td><center>'.$row['asignado'].'</center></td>';
-                    echo '<td><center>'.$row['capturo'].'</center></td>';
+                    //echo '<td><center>'.$row['cliente'].'</center></td>';
+                    $consulta1="SELECT id,nombre_completo FROM usuarios WHERE id = '$cliente' AND priv = 3";
+                    $resultado_consulta1 = $conn->query($consulta1);
+                    $cliente_resultado = $resultado_consulta1->fetch_assoc();
+                    echo '<td><center>'.$cliente_resultado['nombre_completo'].'</center></td>';
+
+                    $consulta2="SELECT id,nombre_completo FROM usuarios WHERE id = '$asignado' AND priv = 4";
+                    $resultado_consulta2 = $conn->query($consulta2);
+                    $trabajador_resultado = $resultado_consulta2->fetch_assoc();
+                    echo '<td><center>'.$trabajador_resultado['nombre_completo'].'</center></td>';
+
+                    // $consulta3="SELECT id,nombre_completo FROM usuarios WHERE id = '$capturo'";
+                    // $resultado_consulta3 = $conn->query($consulta3);
+                    // $usuario_resultado = $resultado_consulta3->fetch_assoc();
+                    // echo '<td><center>'.$usuario_resultado['nombre_completo'].'</center></td>';
+
+                    // echo '<td><center>'.$row['semana'].'</center></td>';
+                    $consulta3="SELECT id,semana FROM semanas WHERE id = '$busca2'";
+                    $resultado_consulta3 = $conn->query($consulta3);
+                    $trabajador_resultado3 = $resultado_consulta3->fetch_assoc();
+                    echo '<td><center>'.$trabajador_resultado3['semana'].'</center></td>';
                     
-                    echo '<td><center>'.$row['fecha_reg_dia'].'/'.$row['fecha_reg_mes'].'/'.$row['fecha_reg_annio'].'</center></td>';
+                    echo '<td><center><a href="../../'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
+                    // echo '<td><center>'.$row['descripcion'].'</center></td>';
+                    echo '<td><center><a href="testigos_bitacora.php?id='.$row['id'].'" class="badge badge-warning">Evidencia</a></center></td>';
+                    // echo '<td><center><a href="modificar_bitacora.php?id='.$row['id'].'" class="badge badge-primary">Modificar</a></center></td>';
+                    // echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
+
+                    //modal eliminar
+                
+                    echo '<div class="modal fade bg-danger" id="exampleModalEliminar'.$numero.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+                    echo '<div class="modal-dialog">';
+                    echo '<div class="modal-content">';
+                    echo '<div class="modal-header">';
+                    echo   ' <h5 class="modal-title" id="exampleModalLabel">¡AVISO!</h5>';
+                    echo     ' <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+                    echo     '<span aria-hidden="true">&times;</span>';
+                    echo     '</button>';
+                    echo '</div>';
+                    echo '<div class="modal-body">';
+                    echo '¿Eliminar bitácora?';
+                    echo '</div>';
+                    echo '<div class="modal-footer">';
+                    echo     '<a href="../../prcd/proceso_eliminar_bitacora.php?id='.$row['id'].'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>';
                     
-                    echo '<td><center><a href="'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
-                    echo '<td><center>'.$row['descripcion'].'</center></td>';
+                    echo     '<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>';
+                    // echo    ' <button type="button" class="btn btn-primary">Save changes</button>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    //fin modal
                     
                 echo '</tr>';
             
             }
-        //}//isset
+        }//isset
         ?>
 
             

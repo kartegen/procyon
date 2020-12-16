@@ -130,7 +130,7 @@ include('../../prcd/conn.php');
             <a class="nav-link active" href="dashboard.html">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
-              Dashboard (Perfil <?php echo $row['cliente']?>)<span class="sr-only">(current)</span>
+              Dashboard </span>
             </a>
           </li>
           <hr style="color: dimgrey;">

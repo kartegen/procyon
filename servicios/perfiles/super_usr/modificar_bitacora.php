@@ -247,15 +247,22 @@ include('../../prcd/conn.php');
                         <label class="input-group-text" for="inputGroupSelect01">Empresa</label>
                       </div>
                       <select class="custom-select" id="inputGroupSelect01" name="empresa" require>
-                          <option selected value="<?php echo $row_consulta['cliente']?>"><?php echo $row_consulta['cliente']?></option>
+                          <option selected value="<?php echo $row_consulta['cliente']?>">
+                          
+                          <?php 
+                              $nombre_empresa=$row_consulta['cliente'];
+                              $consulta_empresa="SELECT * FROM usuarios WHERE priv = 3 AND status_sistema = 1 AND id = '$nombre_empresa'";
+                              $resultadotabla_empresa = $conn->query($consulta_empresa);
+                              $row_empresa = $resultadotabla_empresa->fetch_assoc();
+                              echo $row_empresa['nombre_completo'];
+                          ?></option>                
+                            
                             <?php
+                            
                             $tabla1="SELECT * FROM usuarios WHERE priv = 3 AND status_sistema = 1 ORDER BY id ASC";
                             $resultadotabla1 = $conn->query($tabla1);
-                            $numero1=0;
-                            while($row1 = $resultadotabla1->fetch_assoc()){
-                                $numero1++;
-
-                                    echo '<option value="'.$row1['id'].'">'.$row1['cliente'].'</option>';
+                              while($row1 = $resultadotabla1->fetch_assoc()){
+                                    echo '<option value="'.$row1['id'].'">'.$row1['nombre_completo'].'</option>';
                             }
                             ?> <!-- fin loop tabla -->
                       </select>
@@ -266,16 +273,26 @@ include('../../prcd/conn.php');
                   <label class="input-group-text" for="inputGroupSelect01">Trabajador</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="trabajador" require>
-                <option selected value="<?php echo $row_consulta['asignado']?>"><?php echo $row_consulta['asignado']?></option>
-                <!-- <option value="">Seleccionar...</option> -->
+                <option selected value="<?php echo $row_consulta['asignado']?>">
+                
+                          <?php 
+                              $nombre_trabajadores=$row_consulta['asignado'];
+                              $consulta_trabajadores="SELECT * FROM usuarios WHERE priv = 4 AND status_sistema = 1 AND id = '$nombre_trabajadores'";
+                              $resultadotabla_trabajadores = $conn->query($consulta_trabajadores);
+                              $row_trabajadores = $resultadotabla_trabajadores->fetch_assoc();
+                              echo $row_trabajadores['nombre_completo'];
+                              // echo $row_consulta['asignado'];
+                          ?>
+                
+                
+                
+                </option>
                     <?php
                     $tabla="SELECT * FROM usuarios WHERE priv = 4 AND status_sistema = 1 ORDER BY id ASC";
                     $resultadotabla = $conn->query($tabla);
-                    $numero=0;
+                
                     while($row = $resultadotabla->fetch_assoc()){
-                        $numero++;
-
-                            echo '<option value="'.$row['id'].'">'.$row['nombre_completo'].'</option>';
+                      echo '<option value="'.$row['id'].'">'.$row['nombre_completo'].'</option>';
                     }
                      ?> <!-- fin loop tabla -->
                      
@@ -291,7 +308,19 @@ include('../../prcd/conn.php');
                   <label class="input-group-text" for="inputGroupSelect01">Semana a modificar</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="semana" require>
-                <option selected value="<?php echo $row_consulta['asignado']?>"><?php echo $row_consulta['asignado']?></option>                
+                <option selected value="<?php echo $row_consulta['semana']?>">
+                
+                <?php 
+                 
+                  $nombre_semana=$row_consulta['semana'];
+                  $consulta_semana="SELECT * FROM semanas WHERE id = '$nombre_semana'";
+                  $resultadotabla_semana = $conn->query($consulta_semana);
+                  $row_semana = $resultadotabla_semana->fetch_assoc();
+                  echo $row_semana['semana'];
+                  // echo $row_consulta['asignado'];
+              ?>
+                
+                </option>                
                     <?php
                     $tabla_semana="SELECT * FROM semanas WHERE annio = 2021 ORDER BY id ASC";
                     $resultadotabla_semana = $conn->query($tabla_semana);

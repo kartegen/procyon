@@ -293,7 +293,7 @@ include('../../prcd/conn.php');
             // if($busca!="" && $busca2!=""){
             if($busca!=""){
                 // $tabla="SELECT * FROM bitacora WHERE fecha_reg_annio = '$busca' AND cliente ='$busca2' ORDER BY id ASC";
-                $tabla="SELECT * FROM trabajadores WHERE status_sistema = '$busca'";
+                $tabla="SELECT * FROM usuarios WHERE status_sistema = '$busca' AND priv = 4";
                 $resultadotabla = $conn->query($tabla);
                 // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
                 // $busqueda= $conn->query($sql);
@@ -346,7 +346,7 @@ include('../../prcd/conn.php');
                 
                 // echo '<tr>';
                     echo '<td><center>'.$numero.'</center></td>';
-                    echo '<td><center>'.$row['nombre'].'</center></td>';
+                    echo '<td><center>'.$row['nombre_completo'].'</center></td>';
                     echo '<td><center>'.$row['curp'].'</center></td>';
                     echo '<td><center>'.$row['nss'].'</center></td>';
                     echo '<td><center>'.$row['fecha_reg_dia'].'/'.$row['fecha_reg_mes'].'/'.$row['fecha_reg_annio'].'</center></td>';
@@ -361,25 +361,33 @@ include('../../prcd/conn.php');
                     echo '<td><center><a href="modificar_status_trabajador.php?id='.$row['id'].'" class="badge badge-primary">Modificar Status</a></center></td>';
                     //echo '<td><center><a href="modificar_eliminar_trabajador.php?id='.$row['id'].'" class="badge badge-danger">Eliminar usuario</a></center></td>';
                     // echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
-                    echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Ver perfil</button></center></td>';
+                    echo '<td><center><button type="button" class="badge badge-info" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Ver perfil</button></center></td>';
 
 
                     //modal eliminar
                 
-                    echo '<div class="modal fade bg-danger" id="exampleModalEliminar'.$numero.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+                    echo '<div class="modal fade bg-info" id="exampleModalEliminar'.$numero.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
                     echo '<div class="modal-dialog">';
                     echo '<div class="modal-content">';
                     echo '<div class="modal-header">';
-                    echo   ' <h5 class="modal-title" id="exampleModalLabel">¡AVISO!</h5>';
+                    echo   ' <h5 class="modal-title" id="exampleModalLabel">PERFIL DEL TRABAJADOR</h5>';
                     echo     ' <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
                     echo     '<span aria-hidden="true">&times;</span>';
                     echo     '</button>';
                     echo '</div>';
                     echo '<div class="modal-body">';
-                    echo '¿Eliminar Trabajador?';
+                    echo '<h5>Datos</h5>';
+                    echo '<hr>';
+                    echo '<p><b>Nombre:</b> '.$row['nombre_completo'].'</p>';
+                    echo '<p><b>CURP:</b> '.$row['curp'].'</p>';
+                    echo '<p><b>NSS:</b> '.$row['nss'].'</p>';
+                    echo '<h5>Fotografía</h5>';
+                    echo '<hr>';
+                    echo '<img src="../.'.$row['url_foto'].'" class="rounded mx-auto d-block" alt="..." width="100%">';
+
                     echo '</div>';
                     echo '<div class="modal-footer">';
-                    echo     '<a href="../../prcd/proceso_eliminar_trabajador.php?id='.$row['id'].'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>';
+                    // echo     '<a href="../../prcd/proceso_eliminar_trabajador.php?id='.$row['id'].'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>';
                     
                     echo     '<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>';
                     // echo    ' <button type="button" class="btn btn-primary">Save changes</button>';

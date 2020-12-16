@@ -30,7 +30,7 @@ include('../../prcd/conn.php');
 // variables de sesión
 
     $usuario = $_SESSION['usr'];
-    $id_session = $_SESSION['id'];
+    $id = $_SESSION['id'];
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
 
@@ -133,7 +133,7 @@ include('../../prcd/conn.php');
             <a class="nav-link active" href="dashboard.php">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
-              Dashboard (Súper Usuario)<span class="sr-only">(current)</span>
+              Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
           <hr style="color: dimgrey;">
@@ -152,56 +152,10 @@ include('../../prcd/conn.php');
               <i class="fas fa-file-alt"></i> Revisión
             </a>
           </li>
-         <li class="nav-item">
-            <a class="nav-link" href="agregar_bitacora.php">
-              <!-- <span data-feather="layers"></span> -->
-              <i class="fas fa-file-upload"></i> Cargar documento
-            </a>
-          </li>
-
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Catálogo</span>
-            <a class="d-flex align-items-center text-muted" href="dashboard.php" aria-label="Add a new report">
-              <span data-feather="plus-circle"></span>
-            </a>
-          </h6>
-
-          <li class="nav-item">
-            <a class="nav-link" href="catalogo_trabajadores.php">
-              <!-- <span data-feather="layers"></span> -->
-               
-              <i class="fas fa-file-alt"></i> Trabajadores
-            </a>
-          </li>
-         <li class="nav-item">
-            <a class="nav-link" href="catalogo_empresas.php">
-              <!-- <span data-feather="layers"></span> -->
-              <i class="fas fa-file-alt"></i> Empresas
-            </a>
-          </li>
-         <li class="nav-item">
-            <a class="nav-link" href="catalogo_usuarios.php">
-              <!-- <span data-feather="layers"></span> -->
-              <i class="fas fa-file-alt"></i> Usuarios
-            </a>
-          </li>
+         
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Ajustes</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_usuarios.php">
-              <!-- <span data-feather="file-text"></span> -->
-              <i class="fas fa-user-plus"></i> Agregar Usuario
-            </a>
-          </li>
-        </ul>
+        
       </div>
     </nav>
 
@@ -231,98 +185,22 @@ include('../../prcd/conn.php');
       <h2></h2>
     <div class="container-fluid">
     
-    <form name="formulario1" method="post" action="revision_bitacora.php" id="formulario1" class="form-search">
 	
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; margin-top:50px;">
       
         <div class="container-fluid">
-                    
-                    <div class="input-group mb-3 w-50">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Empresa</label>
-                      </div>
-                      <select class="custom-select" id="busca" name="busca" require>
-                          <option selected>Seleccionar...</option>
-                            <?php
-                            $tabla1="SELECT * FROM usuarios WHERE priv = 3 AND status_sistema = 1 ORDER BY id ASC";
-                            $resultadotabla1 = $conn->query($tabla1);
-                            $numero1=0;
-                            while($row1 = $resultadotabla1->fetch_assoc()){
-                                $numero1++;
-
-                                    echo '<option value="'.$row1['id'].'">'.$row1['nombre_completo'].'</option>';
-                            }
-                            ?> <!-- fin loop tabla -->
-                      </select>
-                    </div>
-                    
-                    
-                    <div class="input-group mb-3 w-50">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="busca">Consulta por semana</label>
-                      </div>
-                      <select class="custom-select" id="busca2" name="busca2" require>
-                          <option selected>Seleccionar...</option>
-                            <?php
-                            $tabla1_semana="SELECT * FROM semanas ORDER BY id ASC";
-                            $resultadotabla1_semana = $conn->query($tabla1_semana);
-                            $numero1_semana=0;
-                            while($row1_semana = $resultadotabla1_semana->fetch_assoc()){
-                                $numero1_semana++;
-
-                                    echo '<option value="'.$row1_semana['id'].'">'.$row1_semana['semana'].' '.$row1_semana['inicia'].' '.$row1_semana['fin'].'</option>';
-                            }
-                            ?> <!-- fin loop tabla -->
-                      </select>
-                      <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-search"></i> Buscar</button>
-                    </div>
-
-                    
-    </form>
-
-<?php
-        if (isset($_POST['busca']) && isset($_POST['busca2'])){ //es para saber cuando se presionó busca
-
-        $busca="";
-        $busca=$_POST['busca'];
-        
-        $busca2="";
-        $busca2=$_POST['busca2'];
-
-            if($busca!="" && $busca2!=""){
-                //$busqueda=mysqli_query("select * from ponencia where email like '%".$busca."' ");
-                $tabla="SELECT * FROM bitacora WHERE semana = '$busca2' AND cliente ='$busca' ORDER BY id ASC";
-                $resultadotabla = $conn->query($tabla);
-                // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
-                // $busqueda= $conn->query($sql);
-                
-        //        $busqueda=mysqli_query($conn,"select * from ponencia where codigo like '%".$busca."' ");
-                
-            }
-            else{
-                echo"No haz agregado información";
-            }
-        //otro isset}
-?>
-          <!-- REPORTES EN PDF -->
-          <!-- <div class="btn-group mr-2" style="margin-bottom:7px;">
-            <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>&id2=<?php echo $busca2;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a>
-            <a href="" type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</a>
-          </div> -->
-           <!-- FIN REPORTES EN PDF -->
+       
+        <?php 
+            $id_consulta=$_REQUEST['id'];
+        ?>
+       
+        <!-- <p><a href="testigos_bitacora_agregar.php?id=<?php echo $id_consulta?>" type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Agregar imagen</a></p> -->
 
         <table class="table table-striped table-hover">
         <thead class="text-center">
             <tr>
             <th scope="col">#</th>
-            <th scope="col">Empresa</th>
-            <th scope="col">Trabajador</th>
-            <!-- <th scope="col">Capturó</th> -->
-            <th scope="col">Semana</th>
-            <th scope="col">Archivo</th>
-            <th scope="col">Evidencia</th>
-            <th scope="col">Modificar</th>
-            <th scope="col">Eliminar</th>
+            <th scope="col">Imagen</th>
             </tr>
         </thead>
         <tbody>
@@ -332,43 +210,36 @@ include('../../prcd/conn.php');
             // $tabla="SELECT * FROM bitacora ORDER BY id ASC";
             // $tabla="SELECT * FROM usr INNER JOIN archivos ON usr.codigo = archivos.codigo_usr WHERE usr.priv = 1 AND usr.tematica=1 ORDER BY usr.id ASC";
             // $resultadotabla = $conn->query($tabla);
+                $tabla="SELECT * FROM testigos WHERE vinculado = '$id_consulta' ORDER BY id ASC";
+                $resultadotabla = $conn->query($tabla);
             $numero=0;
             while($row = $resultadotabla->fetch_assoc()){
                 $numero++;
-                $cliente = $row['cliente'];
-                $asignado = $row['asignado'];
-                $capturo = $row['capturo'];
-                
                 // echo '<tr>';
-                    echo '<td><center>'.$numero.'</center></td>';
-                    //echo '<td><center>'.$row['cliente'].'</center></td>';
-                    $consulta1="SELECT id,nombre_completo FROM usuarios WHERE id = '$cliente' AND priv = 3";
-                    $resultado_consulta1 = $conn->query($consulta1);
-                    $cliente_resultado = $resultado_consulta1->fetch_assoc();
-                    echo '<td><center>'.$cliente_resultado['nombre_completo'].'</center></td>';
-
-                    $consulta2="SELECT id,nombre_completo FROM usuarios WHERE id = '$asignado' AND priv = 4";
-                    $resultado_consulta2 = $conn->query($consulta2);
-                    $trabajador_resultado = $resultado_consulta2->fetch_assoc();
-                    echo '<td><center>'.$trabajador_resultado['nombre_completo'].'</center></td>';
-
-                    // $consulta3="SELECT id,nombre_completo FROM usuarios WHERE id = '$capturo'";
-                    // $resultado_consulta3 = $conn->query($consulta3);
-                    // $usuario_resultado = $resultado_consulta3->fetch_assoc();
-                    // echo '<td><center>'.$usuario_resultado['nombre_completo'].'</center></td>';
-
-                    // echo '<td><center>'.$row['semana'].'</center></td>';
-                    $consulta3="SELECT id,semana FROM semanas WHERE id = '$busca2'";
-                    $resultado_consulta3 = $conn->query($consulta3);
-                    $trabajador_resultado3 = $resultado_consulta3->fetch_assoc();
-                    echo '<td><center>'.$trabajador_resultado3['semana'].'</center></td>';
+                    echo '<td> <div class="row justify-content-center align-items-center"> Imagen '.$numero.'</div></td>';
+                    echo '<td>
                     
-                    echo '<td><center><a href="../../'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
+                    <div class="row justify-content-center align-items-center">
+                        <div class="media text-left">
+                        <a href="../.'.$row['ruta'].'" class="mr-3" alt=""><img src="../.'.$row['ruta'].'" class="mr-3" alt="" class="img-thumbnail rounded float-left" width="50px">
+                        </a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Fecha</h5>
+                                '.$row['fecha'].'                        
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    </td>';
+                   
+                    
+                    // echo '<td><center><a href="../../'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
                     // echo '<td><center>'.$row['descripcion'].'</center></td>';
-                    echo '<td><center><a href="testigos_bitacora.php?id='.$row['id'].'" class="badge badge-warning">Evidencia</a></center></td>';
-                    echo '<td><center><a href="modificar_bitacora.php?id='.$row['id'].'" class="badge badge-primary">Modificar</a></center></td>';
-                    echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
-
+                    // echo '<td><center><a href="testigos_bitacora.php?id='.$row['id'].'" class="badge badge-warning">Evidencia</a></center></td>';
+                    // echo '<td><center><a href="modificar_bitacora.php?id='.$row['id'].'" class="badge badge-primary">Modificar</a></center></td>';
+                    // echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
+                    echo '</tr>';
                     //modal eliminar
                 
                     echo '<div class="modal fade bg-danger" id="exampleModalEliminar'.$numero.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
@@ -397,7 +268,6 @@ include('../../prcd/conn.php');
                 echo '</tr>';
             
             }
-        }//isset
         ?>
 
             

@@ -305,7 +305,51 @@ include('../../prcd/conn.php');
                   <label class="input-group-text" for="inputGroupSelect01">Mes</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="mes" require>
-                <option selected value="<?php echo $row['fecha_reg_mes']?>"><?php echo $row['fecha_reg_mes']?></option>
+                <option selected value="<?php echo $row['fecha_reg_mes']?>">
+                
+                <?php 
+                
+                if($row['fecha_reg_mes']==1){
+                  echo 'Enero';
+              }
+              elseif($row['fecha_reg_mes']==2){
+                  echo 'Febrero';
+              }
+              elseif($row['fecha_reg_mes']==3){
+                  echo 'Marzo';
+              }
+              elseif($row['fecha_reg_mes']==4){
+                  echo 'Abril';
+              }
+              elseif($row['fecha_reg_mes']==5){
+                  echo 'Mayo';
+              }
+              elseif($row['fecha_reg_mes']==6){
+                  echo 'Junio';
+              }
+              elseif($row['fecha_reg_mes']==7){
+                  echo 'Julio';
+              }
+              elseif($row['fecha_reg_mes']==8){
+                  echo 'Agosto';
+              }
+              elseif($row['fecha_reg_mes']==9){
+                  echo 'Septiembre';
+              }
+              elseif($row['fecha_reg_mes']==10){
+                  echo 'Octubre';
+              }
+              elseif($row['fecha_reg_mes']==11){
+                  echo 'Noviembre';
+              }
+              elseif($row['fecha_reg_mes']==12){
+                  echo 'Diciembre';
+              }
+               
+                ?>
+                
+                
+                </option>
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
                   <option value="3">Marzo</option>

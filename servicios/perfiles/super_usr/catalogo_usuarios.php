@@ -292,7 +292,7 @@ include('../../prcd/conn.php');
             // if($busca!="" && $busca2!=""){
             if($busca!=""){
                 // $tabla="SELECT * FROM bitacora WHERE fecha_reg_annio = '$busca' AND cliente ='$busca2' ORDER BY id ASC";
-                $tabla="SELECT * FROM usuarios WHERE status_sistema = '$busca' ORDER BY id ASC";
+                $tabla="SELECT * FROM usuarios WHERE status_sistema = '$busca' ORDER BY priv ASC";
                 $resultadotabla = $conn->query($tabla);
                 // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
                 // $busqueda= $conn->query($sql);

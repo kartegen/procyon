@@ -20,13 +20,11 @@ $fecha_annio = $_POST['annio'];
 // $priv = ;
 $status_sistema = $_POST['status_sistema'];
 
-$sql_2="UPDATE trabajadores
-SET nombre='$nombre', curp='$curp', nss='$nss',tipo_sangre='$tipo_sangre',fecha_reg_dia='$fecha_dia',fecha_reg_mes='$fecha_mes',
+$sql_2="UPDATE usuarios
+SET nombre_completo='$nombre', curp='$curp', nss='$nss',tipo_sangre='$tipo_sangre',fecha_reg_dia='$fecha_dia',fecha_reg_mes='$fecha_mes',
 fecha_reg_annio='$fecha_annio',status_sistema='$status_sistema'
 WHERE id='$id'";
 
-// $sql_2="INSERT INTO trabajadores(nombre,curp,nss,tipo_sangre,fecha_reg_dia,fecha_reg_mes,fecha_reg_annio,fecha_sistema,status_sistema) 
-// VALUES('$nombre','$curp','$nss','$tipo_sangre','$fecha_dia','$fecha_mes','$fecha_annio','$fecha_sistema','$priv')";
 $resultado2= $conn->query($sql_2);
 
 if($resultado2){
