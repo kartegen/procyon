@@ -293,7 +293,7 @@ include('../../prcd/conn.php');
             // if($busca!="" && $busca2!=""){
             if($busca!=""){
                 // $tabla="SELECT * FROM bitacora WHERE fecha_reg_annio = '$busca' AND cliente ='$busca2' ORDER BY id ASC";
-                $tabla="SELECT * FROM clientes WHERE status_sistema = '$busca' ORDER BY id ASC";
+                $tabla="SELECT * FROM usuarios WHERE status_sistema = '$busca' ORDER BY id ASC";
                 $resultadotabla = $conn->query($tabla);
                 // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
                 // $busqueda= $conn->query($sql);
@@ -328,9 +328,8 @@ include('../../prcd/conn.php');
                 <th scope="col">Domicilio</th>
                 <th scope="col">Fecha registro</th>
                 <th scope="col">Status</th>
-                <th scope="col">Usuario vinculado</th>
                 <th scope="col">Modificar</th>
-                <th scope="col">Eliminar</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -343,11 +342,11 @@ include('../../prcd/conn.php');
             $numero=0;
             while($row = $resultadotabla->fetch_assoc()){
                 $numero++;
-                $usr_vinculado = $row['usr_vinculado'];
+                // $usr_vinculado = $row['usr_vinculado'];
                 
                 // echo '<tr>';
                     echo '<td><center>'.$numero.'</center></td>';
-                    echo '<td><center>'.$row['cliente'].'</center></td>';
+                    echo '<td><center>'.$row['nombre_completo'].'</center></td>';
                     echo '<td><center>'.$row['domicilio'].'</center></td>';
                     echo '<td><center>'.$row['fecha_reg_dia'].'/'.$row['fecha_reg_mes'].'/'.$row['fecha_reg_annio'].'</center></td>';
                     
@@ -358,14 +357,14 @@ include('../../prcd/conn.php');
                         echo '<td><center><span class="badge badge-danger">Inactivo</span></center></td>';
                     }
                     
-                    $consulta_vinculado="SELECT id,nombre_completo FROM usuarios WHERE id = '$usr_vinculado'";
-                    $resultado_vinculado = $conn->query($consulta_vinculado);
-                    $cliente_resultado = $resultado_vinculado->fetch_assoc();
-                    echo '<td><center>'.$cliente_resultado['nombre_completo'].'</center></td>';
+                    // $consulta_vinculado="SELECT id,nombre_completo FROM usuarios WHERE id = '$usr_vinculado'";
+                    // $resultado_vinculado = $conn->query($consulta_vinculado);
+                    // $cliente_resultado = $resultado_vinculado->fetch_assoc();
+                    // echo '<td><center>'.$cliente_resultado['nombre_completo'].'</center></td>';
 
                     echo '<td><center><a href="modificar_cliente.php?id='.$row['id'].'" class="badge badge-primary">Modificar Status</a></center></td>';
                     //echo '<td><center><a href="modificar_eliminar_cliente.php?id='.$row['id'].'" class="badge badge-danger">Eliminar usuario</a></center></td>';
-                    echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
+                    // echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
 
                     
                     //modal eliminar
@@ -383,7 +382,7 @@ include('../../prcd/conn.php');
                     echo '¿Eliminar empresa?';
                     echo '</div>';
                     echo '<div class="modal-footer">';
-                    echo     '<a href="../../prcd/proceso_eliminar_cliente.php?id='.$row['id'].'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>';
+                    echo     '<a href="../../prcd/proceso_eliminar_usr.php?id='.$row['id'].'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>';
                     
                     echo     '<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>';
                     // echo    ' <button type="button" class="btn btn-primary">Save changes</button>';

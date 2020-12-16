@@ -44,7 +44,7 @@ include('../../prcd/conn.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>Catálogo Trabajador | PROCYON</title>
+    <title>Bitácora | PROCYON</title>
 
     <link rel="icon" type="../../image/png" href="img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
@@ -207,7 +207,7 @@ include('../../prcd/conn.php');
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 ">
-        <h1 class="display-4">Catálogo trabajadores</h1>
+        <h1 class="display-4">Revisión bitácora</h1>
         
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
@@ -231,106 +231,22 @@ include('../../prcd/conn.php');
       <h2></h2>
     <div class="container-fluid">
     
-    <form name="formulario1" method="post" action="catalogo_trabajadores.php" id="formulario1" class="form-search">
 	
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%; margin-top:50px;">
       
         <div class="container-fluid">
-                    
-                    <div class="input-group mb-3 w-50">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Status</label>
-                      </div>
-                      <select class="custom-select" id="busca" name="busca" require>
-                          <option selected>Seleccionar...</option>
-                            <option value="1">Activo</option>
-                            <option value="2">Inactivo</option>
-                            <!-- <?php
-                            // $tabla="SELECT * FROM clientes ORDER BY id ASC";
-                            // $resultadotabla = $conn->query($tabla);
-                            // $numero=0;
-                            // while($row = $resultadotabla->fetch_assoc()){
-                            //     $numero++;
-
-                            //         echo '<option value="'.$row['id'].'">'.$row['cliente'].'</option>';
-                            // }
-                            ?> -->
-                      </select>
-                      <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-search"></i> Buscar</button>
-                    </div>
-                    
-                    
-                    <!-- <div class="input-group mb-3 w-50">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="busca">Consulta por año</label>
-                      </div>
-                      <select class="custom-select" id="busca" name="busca">
-                          <option selected>Seleccionar...</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                      </select>
-                      <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-search"></i> Buscar</button>
-                    </div> -->
-
-                    
-    </form>
-
-<?php
-        if (isset($_POST['busca'])){ //es para saber cuando se presionó busca
-
-        $busca="";
-        $busca=$_POST['busca'];
-        
-        // $busca2="";
-        // $busca2=$_POST['busca2'];
-
-            // if($busca!="" && $busca2!=""){
-            if($busca!=""){
-                // $tabla="SELECT * FROM bitacora WHERE fecha_reg_annio = '$busca' AND cliente ='$busca2' ORDER BY id ASC";
-                $tabla="SELECT * FROM trabajadores WHERE status_sistema = '$busca'";
-                $resultadotabla = $conn->query($tabla);
-                // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
-                // $busqueda= $conn->query($sql);
-                
-        //        $busqueda=mysqli_query($conn,"select * from ponencia where codigo like '%".$busca."' ");
-                
-            }
-            else{
-                echo"No haz agregado información";
-            }
-        //otro isset}
-?>
-
-          <div class="btn-group mr-2" style="margin-bottom:7px;">
-
-          
-                
-          <!-- REPORTE PDF -->
-            <!-- <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>&id2=<?php echo $busca2;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a> -->
-            <!-- <a href="../../prcd/proceso_pdf_reporte_empresa.php?id=<?php echo $busca;?>" type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</a>
-            <a href="" type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</a> -->
-          <!-- FIN REPORTE PDF -->
-
-           
-          </div>
+       
+        <?php 
+            $id_consulta=$_REQUEST['id'];
+        ?>
+       
+        <p><a href="testigos_bitacora_agregar.php?id=<?php echo $id_consulta?>" type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Agregar imagen</a></p>
 
         <table class="table table-striped table-hover">
         <thead class="text-center">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">CURP</th>
-                <th scope="col">NSS</th>
-                <th scope="col">Fecha ingreso</th>
-                <th scope="col">Status</th>
-                <th scope="col">Modificar</th>
-                <th scope="col">Ver Perfil</th>
+            <th scope="col">#</th>
+            <th scope="col">Imagen</th>
             </tr>
         </thead>
         <tbody>
@@ -340,30 +256,36 @@ include('../../prcd/conn.php');
             // $tabla="SELECT * FROM bitacora ORDER BY id ASC";
             // $tabla="SELECT * FROM usr INNER JOIN archivos ON usr.codigo = archivos.codigo_usr WHERE usr.priv = 1 AND usr.tematica=1 ORDER BY usr.id ASC";
             // $resultadotabla = $conn->query($tabla);
+                $tabla="SELECT * FROM testigos WHERE vinculado = '$id_consulta' ORDER BY id ASC";
+                $resultadotabla = $conn->query($tabla);
             $numero=0;
             while($row = $resultadotabla->fetch_assoc()){
                 $numero++;
-                
                 // echo '<tr>';
-                    echo '<td><center>'.$numero.'</center></td>';
-                    echo '<td><center>'.$row['nombre'].'</center></td>';
-                    echo '<td><center>'.$row['curp'].'</center></td>';
-                    echo '<td><center>'.$row['nss'].'</center></td>';
-                    echo '<td><center>'.$row['fecha_reg_dia'].'/'.$row['fecha_reg_mes'].'/'.$row['fecha_reg_annio'].'</center></td>';
+                    echo '<td> <div class="row justify-content-center align-items-center"> Imagen '.$numero.'</div></td>';
+                    echo '<td>
                     
-                    if($row['status_sistema']==1){
-                        echo '<td><center><span class="badge badge-success">Activo</span></center></td>';
-                    }
-                    elseif($row['status_sistema']==2){
-                        echo '<td><center><span class="badge badge-danger">Inactivo</span></center></td>';
-                    }
-
-                    echo '<td><center><a href="modificar_status_trabajador.php?id='.$row['id'].'" class="badge badge-primary">Modificar Status</a></center></td>';
-                    //echo '<td><center><a href="modificar_eliminar_trabajador.php?id='.$row['id'].'" class="badge badge-danger">Eliminar usuario</a></center></td>';
+                    <div class="row justify-content-center align-items-center">
+                        <div class="media text-left">
+                        <a href="../.'.$row['ruta'].'" class="mr-3" alt=""><img src="../.'.$row['ruta'].'" class="mr-3" alt="" class="img-thumbnail rounded float-left" width="50px">
+                        </a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Fecha</h5>
+                                '.$row['fecha'].'                        
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    </td>';
+                   
+                    
+                    // echo '<td><center><a href="../../'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
+                    // echo '<td><center>'.$row['descripcion'].'</center></td>';
+                    // echo '<td><center><a href="testigos_bitacora.php?id='.$row['id'].'" class="badge badge-warning">Evidencia</a></center></td>';
+                    // echo '<td><center><a href="modificar_bitacora.php?id='.$row['id'].'" class="badge badge-primary">Modificar</a></center></td>';
                     // echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
-                    echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Ver perfil</button></center></td>';
-
-
+                    echo '</tr>';
                     //modal eliminar
                 
                     echo '<div class="modal fade bg-danger" id="exampleModalEliminar'.$numero.'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
@@ -376,10 +298,10 @@ include('../../prcd/conn.php');
                     echo     '</button>';
                     echo '</div>';
                     echo '<div class="modal-body">';
-                    echo '¿Eliminar Trabajador?';
+                    echo '¿Eliminar bitácora?';
                     echo '</div>';
                     echo '<div class="modal-footer">';
-                    echo     '<a href="../../prcd/proceso_eliminar_trabajador.php?id='.$row['id'].'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>';
+                    echo     '<a href="../../prcd/proceso_eliminar_bitacora.php?id='.$row['id'].'" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar usuario</a>';
                     
                     echo     '<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>';
                     // echo    ' <button type="button" class="btn btn-primary">Save changes</button>';
@@ -388,12 +310,10 @@ include('../../prcd/conn.php');
                     echo '</div>';
                     echo '</div>';
                     //fin modal
-                
-                
-              echo '</tr>';
+                    
+                echo '</tr>';
             
             }
-        }//isset
         ?>
 
             

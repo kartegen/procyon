@@ -125,7 +125,7 @@ if(isset($_POST['busca'])){ //es para saber cuando se presionó busca **********
         }   
         $codigo = generarCodigo(9); // genera un código de 9 caracteres de longitud.
 
-        $link= 'bitacora';
+        $link= 'fotografia';
                 $fileName = $_FILES["file1"]["name"]; // The file name
                 $fileTmpLoc = $_FILES["file1"]["tmp_name"]; // File in the PHP tmp folder
                 $fileType = $_FILES["file1"]["type"]; // The type of file it is

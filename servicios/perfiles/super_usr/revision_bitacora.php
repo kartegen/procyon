@@ -320,7 +320,7 @@ include('../../prcd/conn.php');
             <!-- <th scope="col">Capturó</th> -->
             <th scope="col">Fecha</th>
             <th scope="col">Archivo</th>
-            <!-- <th scope="col">Observaciones</th> -->
+            <th scope="col">Evidencia</th>
             <th scope="col">Modificar</th>
             <th scope="col">Eliminar</th>
             </tr>
@@ -360,6 +360,7 @@ include('../../prcd/conn.php');
                     echo '<td><center>'.$row['semana'].'</center></td>';                  
                     echo '<td><center><a href="../../'.$row['url_file'].'" class="badge badge-info" target="_blank">Documento</a></center></td>';
                     // echo '<td><center>'.$row['descripcion'].'</center></td>';
+                    echo '<td><center><a href="testigos_bitacora.php?id='.$row['id'].'" class="badge badge-warning">Evidencia</a></center></td>';
                     echo '<td><center><a href="modificar_bitacora.php?id='.$row['id'].'" class="badge badge-primary">Modificar</a></center></td>';
                     echo '<td><center><button type="button" class="badge badge-danger" data-toggle="modal" data-target="#exampleModalEliminar'.$numero.'">Eliminar</button></center></td>';
 
