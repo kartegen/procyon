@@ -1,3 +1,14 @@
+<html>
+
+<header>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+</header>
+
 <?php
 // session_start();
 include ('conn.php');
@@ -30,7 +41,15 @@ if(isset($_POST['busca'])){ //es para saber cuando se presionó busca **********
 
         if($resultado2){
 
-            header ('Location:../perfiles/super_usr/dashboard.php');
+            echo "<script type=\"text/javascript\">
+            Swal.fire({
+                icon: 'success',
+                title: 'Acción correcta',
+                text: 'Súper usuario agregado',
+                footer: 'PROCYON</a>'
+            }).then(function(){window.location='../perfiles/super_usr/dashboard.php';});</script>";
+
+            // header ('Location:../perfiles/super_usr/dashboard.php');
         }
 
         else{
@@ -57,8 +76,16 @@ if(isset($_POST['busca'])){ //es para saber cuando se presionó busca **********
         $resultado2= $conn->query($sql_2);
 
         if($resultado2){
+
+            echo "<script type=\"text/javascript\">
+            Swal.fire({
+                icon: 'success',
+                title: 'Acción correcta',
+                text: 'Usuario agregado',
+                footer: 'PROCYON</a>'
+            }).then(function(){window.location='../perfiles/super_usr/dashboard.php';});</script>";
             
-            header ('Location:../perfiles/super_usr/dashboard.php');
+            // header ('Location:../perfiles/super_usr/dashboard.php');
             }
             
             else{
@@ -88,8 +115,16 @@ if(isset($_POST['busca'])){ //es para saber cuando se presionó busca **********
         $resultado2= $conn->query($sql_2);
         
         if($resultado2){
+
+            echo "<script type=\"text/javascript\">
+            Swal.fire({
+                icon: 'success',
+                title: 'Acción correcta',
+                text: 'Empresa agregada',
+                footer: 'PROCYON</a>'
+            }).then(function(){window.location='../perfiles/super_usr/dashboard.php';});</script>";
             
-            header ('Location:../perfiles/super_usr/dashboard.php');
+            // header ('Location:../perfiles/super_usr/dashboard.php');
             }
             
             else{
@@ -165,8 +200,16 @@ if(isset($_POST['busca'])){ //es para saber cuando se presionó busca **********
             $resultado2= $conn->query($sql_2);
             
             if($resultado2){
+
+            echo "<script type=\"text/javascript\">
+            Swal.fire({
+                icon: 'success',
+                title: 'Acción correcta',
+                text: 'Empresa agregada',
+                footer: 'PROCYON</a>'
+            }).then(function(){window.location='../perfiles/super_usr/dashboard.php';});</script>";
             
-            header ('Location:../perfiles/super_usr/dashboard.php');
+            // header ('Location:../perfiles/super_usr/dashboard.php');
             }
             
             else{

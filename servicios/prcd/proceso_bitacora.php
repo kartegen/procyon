@@ -1,10 +1,21 @@
+<html>
+
+<header>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+</header>
+
 <?php
 
-ini_set('display_errors', 1);
+// ini_set('display_errors', 1);
 
-ini_set('display_startup_errors', 1);
+// ini_set('display_startup_errors', 1);
 
-error_reporting(E_ALL);
+// error_reporting(E_ALL);
 
 ?>
 
@@ -78,9 +89,31 @@ VALUES('$empresa','$trabajador','$capturo','$semana','$fecha_sistema','$ruta_ppt
  $resultado2= $conn->query($sql_2);
 
  if($resultado2){
+   
+  // echo "<script type=\"text/javascript\">
+  // Swal.fire('Bitácora cargada correctamente').then(function(){window.location='../perfiles/super_usr/revision_bitacora.php';});</script>";
+  echo "<script type=\"text/javascript\">
+  Swal.fire({
+    icon: 'success',
+    title: 'Acción correcta',
+    text: 'Bitácora agregada',
+    footer: 'PROCYON</a>'
+  }).then(function(){window.location='../perfiles/super_usr/revision_bitacora.php';});</script>";
+  
+  // echo "<script type=\'text/javascript\'>
+  //       Swal.fire({
+  //           icon: 'success',
+  //           title: 'Acción correcta',
+  //           text: 'Bitácora agregada'
+  //       }).then(function(){window.location='../perfiles/super_usr/revision_bitacora.php';});
 
-  header ('Location:../perfiles/super_usr/revision_bitacora.php');
- }
+  // </script>";
+  
+  // header ('Location:../perfiles/super_usr/revision_bitacora.php');
+ 
+  
+
+  }
 
  else{
 
@@ -106,3 +139,5 @@ VALUES('$empresa','$trabajador','$capturo','$semana','$fecha_sistema','$ruta_ppt
 
 
 ?>
+
+</html>

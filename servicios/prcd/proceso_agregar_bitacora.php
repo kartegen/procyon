@@ -1,4 +1,13 @@
+<html>
 
+<header>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+</header>
 
 <?php
 include ('conn.php');
@@ -24,7 +33,15 @@ $resultado2= $conn->query($sql_2);
 
 if($resultado2){
 
-    header ('Location:../perfiles/super_usr/dashboard.php');
+    echo "<script type=\"text/javascript\">
+    Swal.fire({
+      icon: 'success',
+      title: 'Acción correcta',
+      text: 'Bitácora agregada',
+      footer: 'PROCYON</a>'
+    }).then(function(){window.location='../perfiles/super_usr/dashboard.php';});</script>";
+    
+    // header ('Location:../perfiles/super_usr/dashboard.php');
 }
 
 else{
@@ -33,3 +50,5 @@ else{
 }
 
 ?>
+
+</html>

@@ -1,3 +1,14 @@
+<html>
+
+<header>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+</header>
+
 <?php
 
 ini_set('display_errors', 1);
@@ -66,7 +77,15 @@ VALUES('$ruta_pptx','$id','$fecha_sistema')";
 
  if($resultado2){
 
-  header ("Location:../perfiles/super_usr/testigos_bitacora.php?id=$id");
+  echo "<script type=\"text/javascript\">
+  Swal.fire({
+    icon: 'success',
+    title: 'Acción correcta',
+    text: 'Testigo agregado',
+    footer: 'PROCYON</a>'
+  }).then(function(){window.location='../perfiles/super_usr/testigos_bitacora.php?id=$id';});</script>";
+
+  // header ("Location:../perfiles/super_usr/testigos_bitacora.php?id=$id");
  }
 
  else{
@@ -75,3 +94,5 @@ VALUES('$ruta_pptx','$id','$fecha_sistema')";
  }
 
 ?>
+
+</html>
