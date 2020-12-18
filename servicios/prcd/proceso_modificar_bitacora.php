@@ -41,7 +41,7 @@ if($resultado2){
     Swal.fire({
         icon: 'success',
         title: 'Acción correcta',
-        text: 'Trabajador eliminado',
+        text: 'Trabajador modificado',
         footer: 'PROCYON</a>'
     }).then(function(){window.location='../perfiles/super_usr/revision_bitacora.php';});</script>";
 
