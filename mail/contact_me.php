@@ -14,7 +14,7 @@ $email_address = $_POST['email'];
 $message = $_POST['message'];
 	
 // crea el mensaje por correo
-$to = 'kartegen@gmail.com';//'emmanuelgm@procyonserviciosintegrales.com';  Aqui va a quien le llega el correo
+$to = 'emmanuelgm@procyonserviciosintegrales.com';//'emmanuelgm@procyonserviciosintegrales.com';  Aqui va a quien le llega el correo
 $email_subject = "Mensaje desde la web:  $name";
 $email_body = "Te enviaron un correo desde el sitio.\n\n"."Aqui estan los detalles:\n\nNombre: $name\n\nEmail: $email_address\n\nMensaje:\n$message";
 $headers = "De tu pagina web\n"; // Aqui debemos ponerla url
