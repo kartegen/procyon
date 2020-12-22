@@ -344,33 +344,33 @@ include('../../prcd/conn.php');
                   echo '<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="curp">';
                   echo '</div>';
                 
-                echo '<div class="input-group mb-3 w-50">';
-                echo '<div class="input-group-prepend">';
-                echo '<label class="input-group-text" for="inputGroupSelect01">Tipo de sangre</label>';
-                echo '</div>';
-                echo '<select class="custom-select" id="inputGroupSelect01" name="tipo_sangre" require>';
-                echo '<option selected>Seleccionar...</option>';
-                echo '<option value="1">O negativo</option>';
-                echo '<option value="2">O positivo</option>';
-                echo '<option value="3">A negativo</option>';
-                echo '<option value="4">A positivo</option>';
-                echo '<option value="5">B negativo</option>';
-                echo '<option value="6">B positivo</option>';
-                echo '<option value="7">AB negativo</option>';
-                echo '<option value="8">AB positivo</option>';
-                echo '</select>';
-                echo '</div>';
-                
-                echo ' <hr class="my-4">';
+                  echo '<div class="input-group mb-3 w-50">';
+                  echo '<div class="input-group-prepend">';
+                  echo '<label class="input-group-text" for="inputGroupSelect01">Tipo de sangre</label>';
+                  echo '</div>';
+                  echo '<select class="custom-select" id="inputGroupSelect01" name="tipo_sangre" require>';
+                  echo '<option selected>Seleccionar...</option>';
+                  echo '<option value="1">O negativo</option>';
+                  echo '<option value="2">O positivo</option>';
+                  echo '<option value="3">A negativo</option>';
+                  echo '<option value="4">A positivo</option>';
+                  echo '<option value="5">B negativo</option>';
+                  echo '<option value="6">B positivo</option>';
+                  echo '<option value="7">AB negativo</option>';
+                  echo '<option value="8">AB positivo</option>';
+                  echo '</select>';
+                  echo '</div>';
+                  
+                  echo ' <hr class="my-4">';
 
-                
-                echo ' <div class="form-group">';
-                echo '<label for="exampleFormControlFile1">Cargar fotografía</label>';
-                echo '<input type="file" class="form-control-file" id="exampleFormControlFile1" name="file1">';
-                echo '</div>';
-                echo ' <hr class="my-4">';
-              }
-              ?>
+                  
+                  echo ' <div class="form-group">';
+                  echo '<label for="exampleFormControlFile1">Cargar fotografía</label>';
+                  echo '<input type="file" class="form-control-file" id="exampleFormControlFile1" name="file1">';
+                  echo '</div>';
+                  echo ' <hr class="my-4">';
+                }
+                ?>
 
               <?php
                 if($busca!=='4'){

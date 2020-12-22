@@ -192,7 +192,7 @@ include('../../prcd/conn.php');
                     
                     <div class="input-group mb-3 w-50">
                       <div class="input-group-prepend">
-                        <label class="input-group-text" for="busca">Consulta por semana</label>
+                        <label class="input-group-text" for="busca2">Consulta por semana</label>
                       </div>
                       <select class="custom-select" id="busca2" name="busca2" require>
                           <option selected>Seleccionar...</option>

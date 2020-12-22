@@ -270,7 +270,7 @@ include('../../prcd/conn.php');
                 <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
                 <p class="card-text">Número de empresas</p>
                 <?php
-                  $contar2="SELECT * FROM clientes WHERE status_sistema = 1";
+                  $contar2="SELECT * FROM usuarios WHERE status_sistema = 1 AND priv = 3";
                   $resultado_contar2 = $conn->query($contar2);
                   $contar_bitacora2 = mysqli_num_rows($resultado_contar2);
                   echo '<h1 class="display-5 text-center">'.$contar_bitacora2.'</h1>';
@@ -286,7 +286,7 @@ include('../../prcd/conn.php');
                 <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
                 <p class="card-text">Trabajadores en el sistema</p>
                 <?php
-                  $contar3="SELECT * FROM trabajadores WHERE status_sistema = 1";
+                  $contar3="SELECT * FROM usuarios WHERE status_sistema = 1 AND priv = 4";
                   $resultado_contar3 = $conn->query($contar3);
                   $contar_bitacora3 = mysqli_num_rows($resultado_contar3);
                   echo '<h1 class="display-5 text-center">'.$contar_bitacora3.'</h1>';

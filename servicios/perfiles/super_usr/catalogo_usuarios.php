@@ -258,26 +258,6 @@ include('../../prcd/conn.php');
                       <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-search"></i> Buscar</button>
                     </div>
                     
-                    
-                    <!-- <div class="input-group mb-3 w-50">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="busca">Consulta por año</label>
-                      </div>
-                      <select class="custom-select" id="busca" name="busca">
-                          <option selected>Seleccionar...</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                      </select>
-                      <button type="submit" class="btn btn-warning" style="margin-left:3px;"><i class="fas fa-search"></i> Buscar</button>
-                    </div> -->
-
-                    
     </form>
 
 <?php
@@ -292,7 +272,7 @@ include('../../prcd/conn.php');
             // if($busca!="" && $busca2!=""){
             if($busca!=""){
                 // $tabla="SELECT * FROM bitacora WHERE fecha_reg_annio = '$busca' AND cliente ='$busca2' ORDER BY id ASC";
-                $tabla="SELECT * FROM usuarios WHERE status_sistema = '$busca' ORDER BY priv ASC";
+                $tabla="SELECT * FROM usuarios WHERE status_sistema = '$busca' AND priv != 4 ORDER BY priv ASC";
                 $resultadotabla = $conn->query($tabla);
                 // $sql=("SELECT * FROM ponencia WHERE codigo = '$busca' OR email = '$busca' ");
                 // $busqueda= $conn->query($sql);

@@ -205,7 +205,7 @@ if(isset($_POST['busca'])){ //es para saber cuando se presionó busca **********
             Swal.fire({
                 icon: 'success',
                 title: 'Acción correcta',
-                text: 'Empresa agregada',
+                text: 'Trabajador agregado',
                 footer: 'PROCYON</a>'
             }).then(function(){window.location='../perfiles/super_usr/dashboard.php';});</script>";
             
