@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <header>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
@@ -8,7 +11,7 @@
 
 <?php
 include('conn.php');
-session_start();
+
 
 $usuario=$_POST['usr'];
 $pwd=$_POST['pwd'];
